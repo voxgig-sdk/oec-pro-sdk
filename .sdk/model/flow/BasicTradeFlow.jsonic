@@ -1,0 +1,22 @@
+# BasicTradeFlow
+
+main: kit: flow: BasicTradeFlow:
+{
+  entity: "trade",
+  kind: "basic",
+  name: "BasicTradeFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "trade_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicTradeFlow"
+}

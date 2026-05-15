@@ -1,0 +1,41 @@
+{
+  "existing": {
+    "product": {
+      "PRODUCT00": {
+        "classification": "s3c",
+        "code": "s3d",
+        "id": "PRODUCT00",
+        "level": "s3f",
+        "name": "s40",
+        "parent_id": "PARENT01"
+      },
+      "PRODUCT01": {
+        "classification": "s78",
+        "code": "s79",
+        "id": "PRODUCT01",
+        "level": "s7b",
+        "name": "s7c",
+        "parent_id": "PARENT01"
+      },
+      "PRODUCT02": {
+        "classification": "sb4",
+        "code": "sb5",
+        "id": "PRODUCT02",
+        "level": "sb7",
+        "name": "sb8",
+        "parent_id": "PARENT01"
+      }
+    }
+  },
+  "new": {
+    "product": {
+      "product_ref01": {
+        "classification": "sf0",
+        "code": "sf1",
+        "level": "sf3",
+        "name": "sf4",
+        "parent_id": "PARENT01"
+      }
+    }
+  }
+}

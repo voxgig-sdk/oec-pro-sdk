@@ -1,0 +1,37 @@
+{
+  "existing": {
+    "country": {
+      "COUNTRY00": {
+        "code": "s32",
+        "continent": "s33",
+        "id": "COUNTRY00",
+        "name": "s35",
+        "region": "s36"
+      },
+      "COUNTRY01": {
+        "code": "s64",
+        "continent": "s65",
+        "id": "COUNTRY01",
+        "name": "s67",
+        "region": "s68"
+      },
+      "COUNTRY02": {
+        "code": "s96",
+        "continent": "s97",
+        "id": "COUNTRY02",
+        "name": "s99",
+        "region": "s9a"
+      }
+    }
+  },
+  "new": {
+    "country": {
+      "country_ref01": {
+        "code": "sc8",
+        "continent": "sc9",
+        "name": "scb",
+        "region": "scc"
+      }
+    }
+  }
+}

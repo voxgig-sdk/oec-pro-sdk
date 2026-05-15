@@ -1,0 +1,42 @@
+{
+  "existing": {
+    "trade": {
+      "TRADE00": {
+        "destination_id": "DESTINATION01",
+        "export_value": 61,
+        "import_value": 62,
+        "origin_id": "ORIGIN01",
+        "product_id": "PRODUCT01",
+        "year": "s41"
+      },
+      "TRADE01": {
+        "destination_id": "DESTINATION01",
+        "export_value": 121,
+        "import_value": 122,
+        "origin_id": "ORIGIN01",
+        "product_id": "PRODUCT01",
+        "year": "s7d"
+      },
+      "TRADE02": {
+        "destination_id": "DESTINATION01",
+        "export_value": 181,
+        "import_value": 182,
+        "origin_id": "ORIGIN01",
+        "product_id": "PRODUCT01",
+        "year": "sb9"
+      }
+    }
+  },
+  "new": {
+    "trade": {
+      "trade_ref01": {
+        "destination_id": "DESTINATION01",
+        "export_value": 241,
+        "import_value": 242,
+        "origin_id": "ORIGIN01",
+        "product_id": "PRODUCT01",
+        "year": "sf5"
+      }
+    }
+  }
+}

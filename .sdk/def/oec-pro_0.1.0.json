@@ -1,0 +1,396 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "OEC Pro API",
+    "description": "The OEC Pro API allows users to access a wide range of international trade data through various endpoints. It provides the ability to construct specific data queries and retrieve meaningful insights from the Observatory of Economic Complexity's datasets.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "OEC Support",
+      "url": "https://oec.world/en/resources/documentation"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://oec.world/api",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/trade": {
+      "get": {
+        "summary": "Get trade data",
+        "description": "Retrieve international trade data for specific countries, products, and time periods",
+        "operationId": "getTradeData",
+        "tags": [
+          "Trade"
+        ],
+        "parameters": [
+          {
+            "name": "origin",
+            "in": "query",
+            "description": "Origin country code",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "destination",
+            "in": "query",
+            "description": "Destination country code",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "product",
+            "in": "query",
+            "description": "Product classification code",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "year",
+            "in": "query",
+            "description": "Year of trade data",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1962,
+              "maximum": 2023
+            }
+          },
+          {
+            "name": "classification",
+            "in": "query",
+            "description": "Product classification system (HS92, HS96, HS02, HS07, HS12, SITC)",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "HS92",
+                "HS96",
+                "HS02",
+                "HS07",
+                "HS12",
+                "SITC"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with trade data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "origin_id": {
+                            "type": "string"
+                          },
+                          "destination_id": {
+                            "type": "string"
+                          },
+                          "product_id": {
+                            "type": "string"
+                          },
+                          "year": {
+                            "type": "integer"
+                          },
+                          "export_value": {
+                            "type": "number"
+                          },
+                          "import_value": {
+                            "type": "number"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - invalid parameters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - invalid or missing API key",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/countries": {
+      "get": {
+        "summary": "Get country information",
+        "description": "Retrieve information about countries available in the OEC database",
+        "operationId": "getCountries",
+        "tags": [
+          "Countries"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "Country ID or code",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "description": "Country name (partial match supported)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with country data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "code": {
+                            "type": "string"
+                          },
+                          "continent": {
+                            "type": "string"
+                          },
+                          "region": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - invalid parameters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/products": {
+      "get": {
+        "summary": "Get product information",
+        "description": "Retrieve information about products available in the OEC database",
+        "operationId": "getProducts",
+        "tags": [
+          "Products"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "Product ID or code",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "description": "Product name (partial match supported)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "classification",
+            "in": "query",
+            "description": "Product classification system",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "HS92",
+                "HS96",
+                "HS02",
+                "HS07",
+                "HS12",
+                "SITC"
+              ]
+            }
+          },
+          {
+            "name": "level",
+            "in": "query",
+            "description": "Classification level (2-digit, 4-digit, 6-digit)",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "2",
+                "4",
+                "6"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with product data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "code": {
+                            "type": "string"
+                          },
+                          "classification": {
+                            "type": "string"
+                          },
+                          "level": {
+                            "type": "integer"
+                          },
+                          "parent_id": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - invalid parameters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Error": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string",
+            "description": "Error message"
+          },
+          "code": {
+            "type": "string",
+            "description": "Error code"
+          },
+          "details": {
+            "type": "string",
+            "description": "Additional error details"
+          }
+        },
+        "required": [
+          "error"
+        ]
+      }
+    },
+    "securitySchemes": {
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-API-Key",
+        "description": "API key required for accessing OEC Pro API endpoints"
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Trade",
+      "description": "Access international trade data"
+    },
+    {
+      "name": "Countries",
+      "description": "Retrieve country information and metadata"
+    },
+    {
+      "name": "Products",
+      "description": "Retrieve product information and classifications"
+    }
+  ]
+}

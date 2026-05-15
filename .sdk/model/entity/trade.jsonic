@@ -1,0 +1,110 @@
+# Entity: trade
+
+main: kit: entity: trade: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "destination_id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "export_value"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "import_value"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "origin_id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "product_id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "year"
+      req: false
+      type: "`$INTEGER`"
+    }
+  ]
+
+  name: "trade"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                kind: "query"
+                name: "classification"
+                orig: "classification"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "destination"
+                orig: "destination"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "origin"
+                orig: "origin"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "product"
+                orig: "product"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "year"
+                orig: "year"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/trade"
+          parts: [
+            "trade"
+          ]
+          select: {
+            exist: [
+              "classification"
+              "destination"
+              "origin"
+              "product"
+              "year"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

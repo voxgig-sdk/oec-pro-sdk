@@ -1,0 +1,11 @@
+# OecPro SDK exists test
+
+require "minitest/autorun"
+require_relative "../OecPro_sdk"
+
+class ExistsTest < Minitest::Test
+  def test_create_test_sdk
+    testsdk = OecProSDK.test(nil, nil)
+    assert !testsdk.nil?
+  end
+end

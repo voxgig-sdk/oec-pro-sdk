@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/oec-pro-sdk"
-	"github.com/voxgig-sdk/oec-pro-sdk/core"
+	sdk "github.com/voxgig-sdk/oec-pro-sdk/go"
+	"github.com/voxgig-sdk/oec-pro-sdk/go/core"
 )
 
 func TestTradeDirect(t *testing.T) {

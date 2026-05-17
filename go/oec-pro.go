@@ -1,10 +1,10 @@
 package voxgigoecprosdk
 
 import (
-	"github.com/voxgig-sdk/oec-pro-sdk/core"
-	"github.com/voxgig-sdk/oec-pro-sdk/entity"
-	"github.com/voxgig-sdk/oec-pro-sdk/feature"
-	_ "github.com/voxgig-sdk/oec-pro-sdk/utility"
+	"github.com/voxgig-sdk/oec-pro-sdk/go/core"
+	"github.com/voxgig-sdk/oec-pro-sdk/go/entity"
+	"github.com/voxgig-sdk/oec-pro-sdk/go/feature"
+	_ "github.com/voxgig-sdk/oec-pro-sdk/go/utility"
 )
 
 // Type aliases preserve external API.

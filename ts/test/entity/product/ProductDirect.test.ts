@@ -79,14 +79,12 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'OECPRO_TEST_PRODUCT_ENTID': {},
     'OECPRO_TEST_LIVE': 'FALSE',
-    'OECPRO_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.OECPRO_TEST_LIVE
 
   if (live) {
     const client = new OecProSDK({
-      apikey: env.OECPRO_APIKEY,
     })
 
     let idmap: any = env['OECPRO_TEST_PRODUCT_ENTID']

@@ -62,14 +62,12 @@ def product_direct_setup(mockres)
   env = Runner.env_override({
     "OECPRO_TEST_PRODUCT_ENTID" => {},
     "OECPRO_TEST_LIVE" => "FALSE",
-    "OECPRO_APIKEY" => "NONE",
   })
 
   live = env["OECPRO_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {
-      "apikey" => env["OECPRO_APIKEY"],
     }
     client = OecProSDK.new(merged_opts)
     return {

@@ -15,9 +15,6 @@ module OecProConfig
       },
       "options" => {
         "base" => "https://oec.world/api",
-        "auth" => {
-          "prefix" => "Bearer",
-        },
         "headers" => {
           "content-type" => "application/json",
         },

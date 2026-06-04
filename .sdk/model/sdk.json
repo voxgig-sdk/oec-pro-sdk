@@ -17,7 +17,17 @@
           }
         ],
         "title": "OEC Pro API",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "tagline": "Query international trade flows, country profiles, and product classifications from the Observatory of Economic Complexity",
+        "homepage": "https://oec.world/",
+        "docs_url": "https://oec.world/api",
+        "about_md": "The [Observatory of Economic Complexity (OEC)](https://oec.world/) is a data visualization and distribution platform for international trade data. Its API exposes the underlying datasets that power the OEC's country and product profiles, letting you pull bilateral trade flows and economic complexity indicators programmatically.\n\nThe API is served from `https://oec.world/api` and is organised around three core concepts: **countries** (reporters and partners), **products** (classified under schemes such as HS and SITC), and **trade** records (exports and imports between country pairs over time).\n\nUse it to build dashboards, run trade-flow analyses, or enrich economic research with consistent, multi-year bilateral trade data sourced from official statistical agencies and harmonised by the OEC team.",
+        "entity_desc": {
+          "country": "Country reporters and trading partners used to scope trade queries and country-level profile data.",
+          "product": "Traded goods classified under standard schemes (e.g. HS, SITC) that can be filtered by code or hierarchy level.",
+          "trade": "Bilateral trade flow records linking a reporter country, partner country, product, and year with export/import values."
+        },
+        "auth": false
       },
       "config": {
         "auth": {
@@ -25,7 +35,15 @@
         },
         "headers": {
           "content-type": "application/json"
-        }
+        },
+        "docs_order": [
+          "ts",
+          "py",
+          "php",
+          "go",
+          "rb",
+          "lua"
+        ]
       },
       "entity": {
         "country": {

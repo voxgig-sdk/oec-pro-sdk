@@ -61,14 +61,12 @@ def _country_direct_setup(mockres):
     env = runner.env_override({
         "OECPRO_TEST_COUNTRY_ENTID": {},
         "OECPRO_TEST_LIVE": "FALSE",
-        "OECPRO_APIKEY": "NONE",
     })
 
     live = env.get("OECPRO_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
-            "apikey": env.get("OECPRO_APIKEY"),
         }
         client = OecProSDK(merged_opts)
         return {

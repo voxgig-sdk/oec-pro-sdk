@@ -68,12 +68,14 @@ function country_direct_setup($mockres)
     $env = Runner::env_override([
         "OECPRO_TEST_COUNTRY_ENTID" => [],
         "OECPRO_TEST_LIVE" => "FALSE",
+        "OECPRO_APIKEY" => "NONE",
     ]);
 
     $live = $env["OECPRO_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [
+            "apikey" => $env["OECPRO_APIKEY"],
         ];
         $client = new OecProSDK($merged_opts);
         return [

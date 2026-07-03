@@ -92,6 +92,7 @@ def _product_basic_setup(extra):
         "OECPRO_TEST_PRODUCT_ENTID": idmap,
         "OECPRO_TEST_LIVE": "FALSE",
         "OECPRO_TEST_EXPLAIN": "FALSE",
+        "OECPRO_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,6 +103,7 @@ def _product_basic_setup(extra):
     if env.get("OECPRO_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
+                "apikey": env.get("OECPRO_APIKEY"),
             },
             extra or {},
         ])

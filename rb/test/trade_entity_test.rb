@@ -83,6 +83,7 @@ def trade_basic_setup(extra)
     "OECPRO_TEST_TRADE_ENTID" => idmap,
     "OECPRO_TEST_LIVE" => "FALSE",
     "OECPRO_TEST_EXPLAIN" => "FALSE",
+    "OECPRO_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -94,6 +95,7 @@ def trade_basic_setup(extra)
   if env["OECPRO_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
+        "apikey" => env["OECPRO_APIKEY"],
       },
       extra || {},
     ])

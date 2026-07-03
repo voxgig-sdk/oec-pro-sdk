@@ -93,12 +93,14 @@ func productDirectSetup(mockres any) *productDirectSetupResult {
 	env := envOverride(map[string]any{
 		"OECPRO_TEST_PRODUCT_ENTID": map[string]any{},
 		"OECPRO_TEST_LIVE":    "FALSE",
+		"OECPRO_APIKEY":       "NONE",
 	})
 
 	live := env["OECPRO_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
+			"apikey": env["OECPRO_APIKEY"],
 		}
 		client := sdk.NewOecProSDK(mergedOpts)
 

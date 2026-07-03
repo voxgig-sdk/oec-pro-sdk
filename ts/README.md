@@ -1,6 +1,11 @@
 # OecPro TypeScript SDK
 
-The TypeScript SDK for the OecPro API. Provides a type-safe, entity-oriented interface with full async/await support.
+
+
+The TypeScript SDK for the OecPro API — a type-safe, entity-oriented client with full async/await support.
+
+> Other languages, the CLI, and MCP server live alongside this one — see
+> the [top-level README](../README.md).
 
 
 ## Install
@@ -17,7 +22,9 @@ loading a specific record.
 ```ts
 import { OecProSDK } from 'oec-pro'
 
-const client = new OecProSDK({})
+const client = new OecProSDK({
+  apikey: process.env.OEC-PRO_APIKEY,
+})
 ```
 
 ### 2. List countrys
@@ -82,7 +89,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new OecProSDK()
+const client = new OecProSDK({ apikey: '...' })
 const testClient = client.tester()
 ```
 
@@ -118,6 +125,7 @@ const logger = {
 }
 
 const client = new OecProSDK({
+  apikey: '...',
   extend: [logger],
 })
 ```
@@ -128,6 +136,7 @@ Create a `.env.local` file at the project root:
 
 ```
 OEC-PRO_TEST_LIVE=TRUE
+OEC-PRO_APIKEY=<your-key>
 ```
 
 Then run:
@@ -145,6 +154,7 @@ cd ts && npm test
 
 ```ts
 new OecProSDK(options?: {
+  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -155,6 +165,7 @@ new OecProSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
+| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |

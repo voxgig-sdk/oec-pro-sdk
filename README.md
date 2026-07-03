@@ -1,16 +1,8 @@
 # OecPro SDK
 
-Query international trade flows, country profiles, and product classifications from the Observatory of Economic Complexity
+OEC Pro API client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About OEC Pro API
-
-The [Observatory of Economic Complexity (OEC)](https://oec.world/) is a data visualization and distribution platform for international trade data. Its API exposes the underlying datasets that power the OEC's country and product profiles, letting you pull bilateral trade flows and economic complexity indicators programmatically.
-
-The API is served from `https://oec.world/api` and is organised around three core concepts: **countries** (reporters and partners), **products** (classified under schemes such as HS and SITC), and **trade** records (exports and imports between country pairs over time).
-
-Use it to build dashboards, run trade-flow analyses, or enrich economic research with consistent, multi-year bilateral trade data sourced from official statistical agencies and harmonised by the OEC team.
 
 ## Try it
 
@@ -44,29 +36,31 @@ gem install oec-pro-sdk
 luarocks install oec-pro-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { OecProSDK } from 'oec-pro'
 
-const client = new OecProSDK({})
+const client = new OecProSDK({
+  apikey: process.env.OEC-PRO_APIKEY,
+})
 
 // List all countrys
 const countrys = await client.Country().list()
+console.log(countrys.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -96,9 +90,9 @@ The API exposes 3 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Country** | Country reporters and trading partners used to scope trade queries and country-level profile data. | `/countries` |
-| **Product** | Traded goods classified under standard schemes (e.g. HS, SITC) that can be filtered by code or hierarchy level. | `/products` |
-| **Trade** | Bilateral trade flow records linking a reporter country, partner country, product, and year with export/import values. | `/trade` |
+| **Country** |  | `/countries` |
+| **Product** |  | `/products` |
+| **Trade** |  | `/trade` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -108,12 +102,16 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from oecpro_sdk import OecProSDK
 
-client = OecProSDK({})
+client = OecProSDK({
+    "apikey": os.environ.get("OEC-PRO_APIKEY"),
+})
 
 # List all countrys
-countrys, err = client.Country(None).list(None, None)
+countrys, err = client.Country().list()
+print(countrys)
 ```
 
 ### PHP
@@ -122,10 +120,13 @@ countrys, err = client.Country(None).list(None, None)
 <?php
 require_once 'oecpro_sdk.php';
 
-$client = new OecProSDK([]);
+$client = new OecProSDK([
+    "apikey" => getenv("OEC-PRO_APIKEY"),
+]);
 
 // List all countrys
-[$countrys, $err] = $client->Country(null)->list(null, null);
+[$countrys, $err] = $client->Country()->list();
+print_r($countrys);
 ```
 
 ### Golang
@@ -133,10 +134,13 @@ $client = new OecProSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/oec-pro-sdk/go"
 
-client := sdk.NewOecProSDK(map[string]any{})
+client := sdk.NewOecProSDK(map[string]any{
+    "apikey": os.Getenv("OEC-PRO_APIKEY"),
+})
 
 // List all countrys
 countrys, err := client.Country(nil).List(nil, nil)
+fmt.Println(countrys)
 ```
 
 ### Ruby
@@ -144,10 +148,13 @@ countrys, err := client.Country(nil).List(nil, nil)
 ```ruby
 require_relative "OecPro_sdk"
 
-client = OecProSDK.new({})
+client = OecProSDK.new({
+  "apikey" => ENV["OEC-PRO_APIKEY"],
+})
 
 # List all countrys
-countrys, err = client.Country(nil).list(nil, nil)
+countrys, err = client.Country().list
+puts countrys
 ```
 
 ### Lua
@@ -155,10 +162,13 @@ countrys, err = client.Country(nil).list(nil, nil)
 ```lua
 local sdk = require("oec-pro_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("OEC-PRO_APIKEY"),
+})
 
 -- List all countrys
-local countrys, err = client:Country(nil):list(nil, nil)
+local countrys, err = client:Country():list()
+print(countrys)
 ```
 
 ## Unit testing in offline mode
@@ -177,25 +187,21 @@ const result = await client.Country().load({ id: 'test01' })
 ### Python
 
 ```python
-client = OecProSDK.test(None, None)
-result, err = client.Country(None).load(
-    {"id": "test01"}, None
-)
+client = OecProSDK.test()
+result, err = client.Country().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = OecProSDK::test(null, null);
-[$result, $err] = $client->Country(null)->load(
-    ["id" => "test01"], null
-);
+$client = OecProSDK::test();
+[$result, $err] = $client->Country()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.Country(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -204,19 +210,15 @@ result, err := client.Country(nil).Load(
 ### Ruby
 
 ```ruby
-client = OecProSDK.test(nil, nil)
-result, err = client.Country(nil).load(
-  { "id" => "test01" }, nil
-)
+client = OecProSDK.test
+result, err = client.Country().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:Country(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:Country():load({ id = "test01" })
 ```
 
 ## How it works
@@ -320,11 +322,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the OEC Pro API
-
-- Upstream: [https://oec.world/](https://oec.world/)
-- API docs: [https://oec.world/api](https://oec.world/api)
 
 ---
 

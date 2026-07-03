@@ -119,6 +119,7 @@ func countryBasicSetup(extra map[string]any) *entityTestSetup {
 		"OECPRO_TEST_COUNTRY_ENTID": idmap,
 		"OECPRO_TEST_LIVE":      "FALSE",
 		"OECPRO_TEST_EXPLAIN":   "FALSE",
+		"OECPRO_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["OECPRO_TEST_COUNTRY_ENTID"])
@@ -129,6 +130,7 @@ func countryBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["OECPRO_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
+				"apikey": env["OECPRO_APIKEY"],
 			},
 			extra,
 		})

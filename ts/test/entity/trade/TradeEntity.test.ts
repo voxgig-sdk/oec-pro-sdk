@@ -113,6 +113,7 @@ function basicSetup(extra?: any) {
     'OEC_PRO_TEST_TRADE_ENTID': idmap,
     'OEC_PRO_TEST_LIVE': 'FALSE',
     'OEC_PRO_TEST_EXPLAIN': 'FALSE',
+    'OEC_PRO_APIKEY': 'NONE',
   })
 
   idmap = env['OEC_PRO_TEST_TRADE_ENTID']
@@ -122,6 +123,7 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new OecProSDK(merge([
       {
+        apikey: env.OEC_PRO_APIKEY,
       },
       extra
     ]))

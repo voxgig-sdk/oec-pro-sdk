@@ -10,13 +10,13 @@ The Ruby SDK for the OecPro API — an entity-oriented client using idiomatic Ru
 
 ## Install
 ```bash
-gem install oec-pro-sdk
+gem install voxgig-sdk-oec-pro
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "oec-pro-sdk"
+gem "voxgig-sdk-oec-pro"
 ```
 
 Then run:

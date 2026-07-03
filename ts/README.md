@@ -10,7 +10,7 @@ The TypeScript SDK for the OecPro API — a type-safe, entity-oriented client wi
 
 ## Install
 ```bash
-npm install oec-pro
+npm install @voxgig-sdk/oec-pro
 ```
 ## Tutorial: your first API call
 

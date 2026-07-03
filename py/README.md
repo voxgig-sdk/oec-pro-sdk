@@ -10,7 +10,7 @@ The Python SDK for the OecPro API — an entity-oriented client following Python
 
 ## Install
 ```bash
-pip install oec-pro-sdk
+pip install voxgig-sdk-oec-pro
 ```
 
 Or install from source:

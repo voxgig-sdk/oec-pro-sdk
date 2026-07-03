@@ -10,7 +10,7 @@ The PHP SDK for the OecPro API — an entity-oriented client using PHP conventio
 
 ## Install
 ```bash
-composer require voxgig/oec-pro-sdk
+composer require voxgig-sdk/oec-pro
 ```
 
 

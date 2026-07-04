@@ -43,8 +43,7 @@ class ProductEntityTest < Minitest::Test
     product_ref01_ent = client.Product(nil)
     product_ref01_match = {}
 
-    product_ref01_list_result, err = product_ref01_ent.list(product_ref01_match, nil)
-    assert_nil err
+    product_ref01_list_result = product_ref01_ent.list(product_ref01_match, nil)
     assert product_ref01_list_result.is_a?(Array)
 
   end

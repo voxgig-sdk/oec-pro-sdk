@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Trade,
+  TradeListMatch,
+} from '../OecProTypes'
 
 // TODO: needs Entity superclass
-class TradeEntity extends OecProEntityBase {
+class TradeEntity extends OecProEntityBase<Trade> {
 
   constructor(client: OecProSDK, entopts: any) {
     super(client, entopts)
@@ -33,7 +37,7 @@ class TradeEntity extends OecProEntityBase {
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: TradeListMatch, ctrl?: Control): Promise<Trade[]> {
 
     const utility = this._utility
 
@@ -133,7 +137,9 @@ class TradeEntity extends OecProEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Trade[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

@@ -244,18 +244,57 @@ end
 
 
 
+-- Idiomatic facade: client:country():list() / client:country():load({ id = ... })
+function OecProSDK:country(data)
+  local EntityMod = require("entity.country_entity")
+  if data == nil then
+    if self._country == nil then
+      self._country = EntityMod.new(self, nil)
+    end
+    return self._country
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:country() instead.
 function OecProSDK:Country(data)
   local EntityMod = require("entity.country_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:product():list() / client:product():load({ id = ... })
+function OecProSDK:product(data)
+  local EntityMod = require("entity.product_entity")
+  if data == nil then
+    if self._product == nil then
+      self._product = EntityMod.new(self, nil)
+    end
+    return self._product
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:product() instead.
 function OecProSDK:Product(data)
   local EntityMod = require("entity.product_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:trade():list() / client:trade():load({ id = ... })
+function OecProSDK:trade(data)
+  local EntityMod = require("entity.trade_entity")
+  if data == nil then
+    if self._trade == nil then
+      self._trade = EntityMod.new(self, nil)
+    end
+    return self._trade
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:trade() instead.
 function OecProSDK:Trade(data)
   local EntityMod = require("entity.trade_entity")
   return EntityMod.new(self, data)

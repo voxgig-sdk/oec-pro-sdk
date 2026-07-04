@@ -62,9 +62,11 @@ Return a deep copy of the current SDK options.
 
 Return a copy of the SDK utility object.
 
-#### `direct(fetchargs = {}) -> Hash, err`
+#### `direct(fetchargs = {}) -> Hash`
 
-Make a direct HTTP request to any API endpoint.
+Make a direct HTTP request to any API endpoint. Returns a result hash
+(`{ "ok" => ..., "status" => ..., "data" => ..., "err" => ... }`); it
+does not raise — inspect `result["ok"]`.
 
 **Parameters:**
 
@@ -78,14 +80,14 @@ Make a direct HTTP request to any API endpoint.
 | `fetchargs["body"]` | `any` | Request body (hashes are JSON-serialized). |
 | `fetchargs["ctrl"]` | `Hash` | Control options (e.g. `{ "explain" => true }`). |
 
-**Returns:** `Hash, err`
+**Returns:** `Hash`
 
-#### `prepare(fetchargs = {}) -> Hash, err`
+#### `prepare(fetchargs = {}) -> Hash`
 
 Prepare a fetch definition without sending the request. Accepts the
-same parameters as `direct()`.
+same parameters as `direct()`. Raises on error.
 
-**Returns:** `Hash, err`
+**Returns:** `Hash` (the fetch definition; raises on error)
 
 
 ---
@@ -93,7 +95,7 @@ same parameters as `direct()`.
 ## CountryEntity
 
 ```ruby
-country = client.Country
+country = client.country
 ```
 
 ### Fields
@@ -108,12 +110,12 @@ country = client.Country
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.Country.list(nil)
+results = client.country.list(nil)
 ```
 
 ### Common Methods
@@ -149,7 +151,7 @@ Return the entity name.
 ## ProductEntity
 
 ```ruby
-product = client.Product
+product = client.product
 ```
 
 ### Fields
@@ -165,12 +167,12 @@ product = client.Product
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.Product.list(nil)
+results = client.product.list(nil)
 ```
 
 ### Common Methods
@@ -206,7 +208,7 @@ Return the entity name.
 ## TradeEntity
 
 ```ruby
-trade = client.Trade
+trade = client.trade
 ```
 
 ### Fields
@@ -222,12 +224,12 @@ trade = client.Trade
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> result, err`
+#### `list(reqmatch, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results, err = client.Trade.list(nil)
+results = client.trade.list(nil)
 ```
 
 ### Common Methods

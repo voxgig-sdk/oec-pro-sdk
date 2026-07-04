@@ -50,8 +50,7 @@ class ProductEntityTest extends TestCase
         $product_ref01_ent = $client->Product(null);
         $product_ref01_match = [];
 
-        [$product_ref01_list_result, $err] = $product_ref01_ent->list($product_ref01_match, null);
-        $this->assertNull($err);
+        $product_ref01_list_result = $product_ref01_ent->list($product_ref01_match, null);
         $this->assertIsArray($product_ref01_list_result);
 
     }

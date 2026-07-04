@@ -134,7 +134,7 @@ Alias for `OecProSDK.test()`.
 ## CountryEntity
 
 ```ts
-const country = client.Country()
+const country = client.country
 ```
 
 ### Fields
@@ -154,7 +154,7 @@ const country = client.Country()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Country().list()
+const results = await client.country.list()
 ```
 
 ### Common Methods
@@ -188,7 +188,7 @@ Return a copy of the entity options.
 ## ProductEntity
 
 ```ts
-const product = client.Product()
+const product = client.product
 ```
 
 ### Fields
@@ -209,7 +209,7 @@ const product = client.Product()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Product().list()
+const results = await client.product.list()
 ```
 
 ### Common Methods
@@ -243,7 +243,7 @@ Return a copy of the entity options.
 ## TradeEntity
 
 ```ts
-const trade = client.Trade()
+const trade = client.trade
 ```
 
 ### Fields
@@ -264,7 +264,7 @@ const trade = client.Trade()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Trade().list()
+const results = await client.trade.list()
 ```
 
 ### Common Methods

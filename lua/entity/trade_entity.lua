@@ -81,6 +81,10 @@ end
 
 
 
+---@param reqmatch TradeListMatch
+---@param ctrl? table
+---@return Trade[]
+---@return string? err
 function TradeEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

@@ -144,16 +144,23 @@ class OecProSDK:
 
         _, err = utility.prepare_auth(ctx)
         if err is not None:
-            return None, err
+            raise err
 
-        return utility.make_fetch_def(ctx)
+        fetchdef, err = utility.make_fetch_def(ctx)
+        if err is not None:
+            raise err
+
+        return fetchdef
 
     def direct(self, fetchargs=None):
         utility = self._utility
 
-        fetchdef, err = self.prepare(fetchargs)
-        if err is not None:
-            return {"ok": False, "err": err}, None
+        try:
+            fetchdef = self.prepare(fetchargs)
+        except Exception as err:
+            # direct() is the raw-HTTP escape hatch: it never raises, it
+            # returns a result object callers branch on via result["ok"].
+            return {"ok": False, "err": err}
 
         if fetchargs is None:
             fetchargs = {}
@@ -170,13 +177,13 @@ class OecProSDK:
         fetched, fetch_err = utility.fetcher(ctx, url, fetchdef)
 
         if fetch_err is not None:
-            return {"ok": False, "err": fetch_err}, None
+            return {"ok": False, "err": fetch_err}
 
         if fetched is None:
             return {
                 "ok": False,
                 "err": ctx.make_error("direct_no_response", "response: undefined"),
-            }, None
+            }
 
         if isinstance(fetched, dict):
             status = helpers.to_int(vs.getprop(fetched, "status"))
@@ -205,25 +212,58 @@ class OecProSDK:
                 "status": status,
                 "headers": headers,
                 "data": json_data,
-            }, None
+            }
 
         return {
             "ok": False,
             "err": ctx.make_error("direct_invalid", "invalid response type"),
-        }, None
+        }
 
+
+    @property
+    def country(self):
+        """Idiomatic facade: client.country.list() / client.country.load({"id": ...})."""
+        from entity.country_entity import CountryEntity
+        cached = getattr(self, "_country", None)
+        if cached is None:
+            cached = CountryEntity(self, None)
+            self._country = cached
+        return cached
 
     def Country(self, data=None):
+        # Deprecated: use client.country instead.
         from entity.country_entity import CountryEntity
         return CountryEntity(self, data)
 
 
+    @property
+    def product(self):
+        """Idiomatic facade: client.product.list() / client.product.load({"id": ...})."""
+        from entity.product_entity import ProductEntity
+        cached = getattr(self, "_product", None)
+        if cached is None:
+            cached = ProductEntity(self, None)
+            self._product = cached
+        return cached
+
     def Product(self, data=None):
+        # Deprecated: use client.product instead.
         from entity.product_entity import ProductEntity
         return ProductEntity(self, data)
 
 
+    @property
+    def trade(self):
+        """Idiomatic facade: client.trade.list() / client.trade.load({"id": ...})."""
+        from entity.trade_entity import TradeEntity
+        cached = getattr(self, "_trade", None)
+        if cached is None:
+            cached = TradeEntity(self, None)
+            self._trade = cached
+        return cached
+
     def Trade(self, data=None):
+        # Deprecated: use client.trade instead.
         from entity.trade_entity import TradeEntity
         return TradeEntity(self, data)
 

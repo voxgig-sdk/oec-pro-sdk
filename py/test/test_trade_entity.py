@@ -50,8 +50,7 @@ class TestTradeEntity:
         trade_ref01_ent = client.Trade(None)
         trade_ref01_match = {}
 
-        trade_ref01_list_result, err = trade_ref01_ent.list(trade_ref01_match, None)
-        assert err is None
+        trade_ref01_list_result = trade_ref01_ent.list(trade_ref01_match, None)
         assert isinstance(trade_ref01_list_result, list)
 
 

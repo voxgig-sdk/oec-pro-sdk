@@ -4,6 +4,8 @@ import { CountryEntity } from './entity/CountryEntity'
 import { ProductEntity } from './entity/ProductEntity'
 import { TradeEntity } from './entity/TradeEntity'
 
+export type * from './OecProTypes'
+
 
 import { inspect } from 'node:util'
 
@@ -204,18 +206,42 @@ class OecProSDK {
 
 
 
+  _country?: CountryEntity
+
+  // Idiomatic facade: `client.country.list()` / `client.country.load({ id })`.
+  get country(): CountryEntity {
+    return (this._country ??= new CountryEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.country` instead. */
   Country(data?: any) {
     const self = this
     return new CountryEntity(self,data)
   }
 
 
+  _product?: ProductEntity
+
+  // Idiomatic facade: `client.product.list()` / `client.product.load({ id })`.
+  get product(): ProductEntity {
+    return (this._product ??= new ProductEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.product` instead. */
   Product(data?: any) {
     const self = this
     return new ProductEntity(self,data)
   }
 
 
+  _trade?: TradeEntity
+
+  // Idiomatic facade: `client.trade.list()` / `client.trade.load({ id })`.
+  get trade(): TradeEntity {
+    return (this._trade ??= new TradeEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.trade` instead. */
   Trade(data?: any) {
     const self = this
     return new TradeEntity(self,data)

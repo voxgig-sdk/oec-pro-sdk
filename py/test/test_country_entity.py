@@ -50,8 +50,7 @@ class TestCountryEntity:
         country_ref01_ent = client.Country(None)
         country_ref01_match = {}
 
-        country_ref01_list_result, err = country_ref01_ent.list(country_ref01_match, None)
-        assert err is None
+        country_ref01_list_result = country_ref01_ent.list(country_ref01_match, None)
         assert isinstance(country_ref01_list_result, list)
 
 

@@ -9,12 +9,9 @@ The Lua SDK for the OecPro API — an entity-oriented client using Lua conventio
 
 
 ## Install
-```bash
-luarocks install voxgig-sdk-oec-pro
-```
-
-If the module is not yet published, add the source directory to
-your `LUA_PATH`:
+This package is not yet published to LuaRocks. Install it from the
+GitHub release tag (`lua/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/oec-pro-sdk/releases)),
+or add the source directory to your `LUA_PATH`:
 
 ```bash
 export LUA_PATH="path/to/lua/?.lua;path/to/lua/?/init.lua;;"
@@ -32,14 +29,14 @@ loading a specific record.
 local sdk = require("oec-pro_sdk")
 
 local client = sdk.new({
-  apikey = os.getenv("OEC-PRO_APIKEY"),
+  apikey = os.getenv("OEC_PRO_APIKEY"),
 })
 ```
 
 ### 2. List countrys
 
 ```lua
-local result, err = client:Country():list()
+local result, err = client:country():list()
 if err then error(err) end
 
 if type(result) == "table" then
@@ -93,7 +90,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:OecPro():load({ id = "test01" })
+local result, err = client:country():load({ id = "test01" })
 -- result contains mock response data
 ```
 
@@ -126,8 +123,8 @@ local client = sdk.new({
 Create a `.env.local` file at the project root:
 
 ```
-OEC-PRO_TEST_LIVE=TRUE
-OEC-PRO_APIKEY=<your-key>
+OEC_PRO_TEST_LIVE=TRUE
+OEC_PRO_APIKEY=<your-key>
 ```
 
 Then run:
@@ -263,7 +260,7 @@ API path: `/trade`
 
 ### Country
 
-Create an instance: `const country = client.Country()`
+Create an instance: `const country = client.country`
 
 #### Operations
 
@@ -284,13 +281,13 @@ Create an instance: `const country = client.Country()`
 #### Example: List
 
 ```ts
-const countrys = await client.Country().list()
+const countrys = await client.country.list()
 ```
 
 
 ### Product
 
-Create an instance: `const product = client.Product()`
+Create an instance: `const product = client.product`
 
 #### Operations
 
@@ -312,13 +309,13 @@ Create an instance: `const product = client.Product()`
 #### Example: List
 
 ```ts
-const products = await client.Product().list()
+const products = await client.product.list()
 ```
 
 
 ### Trade
 
-Create an instance: `const trade = client.Trade()`
+Create an instance: `const trade = client.trade`
 
 #### Operations
 
@@ -340,7 +337,7 @@ Create an instance: `const trade = client.Trade()`
 #### Example: List
 
 ```ts
-const trades = await client.Trade().list()
+const trades = await client.trade.list()
 ```
 
 
@@ -415,11 +412,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local moon = client:Moon(nil)
-moon:load({ planet_id = "earth", id = "luna" }, nil)
+local country = client:country()
+country:load({ id = "example_id" })
 
--- moon:data_get() now returns the loaded moon data
--- moon:match_get() returns the last match criteria
+-- country:data_get() now returns the loaded country data
+-- country:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

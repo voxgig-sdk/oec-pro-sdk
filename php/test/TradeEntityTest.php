@@ -50,8 +50,7 @@ class TradeEntityTest extends TestCase
         $trade_ref01_ent = $client->Trade(null);
         $trade_ref01_match = [];
 
-        [$trade_ref01_list_result, $err] = $trade_ref01_ent->list($trade_ref01_match, null);
-        $this->assertNull($err);
+        $trade_ref01_list_result = $trade_ref01_ent->list($trade_ref01_match, null);
         $this->assertIsArray($trade_ref01_list_result);
 
     }

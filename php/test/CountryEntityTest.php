@@ -50,8 +50,7 @@ class CountryEntityTest extends TestCase
         $country_ref01_ent = $client->Country(null);
         $country_ref01_match = [];
 
-        [$country_ref01_list_result, $err] = $country_ref01_ent->list($country_ref01_match, null);
-        $this->assertNull($err);
+        $country_ref01_list_result = $country_ref01_ent->list($country_ref01_match, null);
         $this->assertIsArray($country_ref01_list_result);
 
     }

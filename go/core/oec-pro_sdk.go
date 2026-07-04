@@ -245,16 +245,25 @@ func (sdk *OecProSDK) Direct(fetchargs map[string]any) (map[string]any, error) {
 }
 
 
+// Country returns a Country entity bound to this client.
+// Idiomatic usage: client.Country(nil).List(nil, nil) or
+// client.Country(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *OecProSDK) Country(data map[string]any) OecProEntity {
 	return NewCountryEntityFunc(sdk, data)
 }
 
 
+// Product returns a Product entity bound to this client.
+// Idiomatic usage: client.Product(nil).List(nil, nil) or
+// client.Product(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *OecProSDK) Product(data map[string]any) OecProEntity {
 	return NewProductEntityFunc(sdk, data)
 }
 
 
+// Trade returns a Trade entity bound to this client.
+// Idiomatic usage: client.Trade(nil).List(nil, nil) or
+// client.Trade(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *OecProSDK) Trade(data map[string]any) OecProEntity {
 	return NewTradeEntityFunc(sdk, data)
 }

@@ -43,8 +43,7 @@ class TradeEntityTest < Minitest::Test
     trade_ref01_ent = client.Trade(nil)
     trade_ref01_match = {}
 
-    trade_ref01_list_result, err = trade_ref01_ent.list(trade_ref01_match, nil)
-    assert_nil err
+    trade_ref01_list_result = trade_ref01_ent.list(trade_ref01_match, nil)
     assert trade_ref01_list_result.is_a?(Array)
 
   end

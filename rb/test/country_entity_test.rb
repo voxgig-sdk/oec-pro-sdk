@@ -43,8 +43,7 @@ class CountryEntityTest < Minitest::Test
     country_ref01_ent = client.Country(nil)
     country_ref01_match = {}
 
-    country_ref01_list_result, err = country_ref01_ent.list(country_ref01_match, nil)
-    assert_nil err
+    country_ref01_list_result = country_ref01_ent.list(country_ref01_match, nil)
     assert country_ref01_list_result.is_a?(Array)
 
   end

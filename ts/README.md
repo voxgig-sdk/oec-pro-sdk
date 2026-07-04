@@ -9,9 +9,12 @@ The TypeScript SDK for the OecPro API — a type-safe, entity-oriented client wi
 
 
 ## Install
-```bash
-npm install @voxgig-sdk/oec-pro
-```
+This package is not yet published to npm. Install it from the GitHub
+release tag (`ts/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/oec-pro-sdk/releases](https://github.com/voxgig-sdk/oec-pro-sdk/releases)
+
+
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
@@ -20,17 +23,17 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { OecProSDK } from 'oec-pro'
+import { OecProSDK } from '@voxgig-sdk/oec-pro'
 
 const client = new OecProSDK({
-  apikey: process.env.OEC-PRO_APIKEY,
+  apikey: process.env.OEC_PRO_APIKEY,
 })
 ```
 
 ### 2. List countrys
 
 ```ts
-const result = await client.Country().list()
+const result = await client.country.list()
 
 if (result.ok) {
   for (const item of result.data) {
@@ -81,7 +84,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = OecProSDK.test()
 
-const result = await client.Planet().load({ id: 'test01' })
+const result = await client.country.load({ id: 'test01' })
 // result.ok === true
 // result.data contains mock response data
 ```
@@ -98,7 +101,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Planet()
+const entity = client.country
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -135,8 +138,8 @@ const client = new OecProSDK({
 Create a `.env.local` file at the project root:
 
 ```
-OEC-PRO_TEST_LIVE=TRUE
-OEC-PRO_APIKEY=<your-key>
+OEC_PRO_TEST_LIVE=TRUE
+OEC_PRO_APIKEY=<your-key>
 ```
 
 Then run:
@@ -304,7 +307,7 @@ API path: `/trade`
 
 ### Country
 
-Create an instance: `const country = client.Country()`
+Create an instance: `const country = client.country`
 
 #### Operations
 
@@ -325,13 +328,13 @@ Create an instance: `const country = client.Country()`
 #### Example: List
 
 ```ts
-const countrys = await client.Country().list()
+const countrys = await client.country.list()
 ```
 
 
 ### Product
 
-Create an instance: `const product = client.Product()`
+Create an instance: `const product = client.product`
 
 #### Operations
 
@@ -353,13 +356,13 @@ Create an instance: `const product = client.Product()`
 #### Example: List
 
 ```ts
-const products = await client.Product().list()
+const products = await client.product.list()
 ```
 
 
 ### Trade
 
-Create an instance: `const trade = client.Trade()`
+Create an instance: `const trade = client.trade`
 
 #### Operations
 
@@ -381,7 +384,7 @@ Create an instance: `const trade = client.Trade()`
 #### Example: List
 
 ```ts
-const trades = await client.Trade().list()
+const trades = await client.trade.list()
 ```
 
 
@@ -442,7 +445,7 @@ oec-pro/
 Import the SDK from the package root:
 
 ```ts
-import { OecProSDK } from 'oec-pro'
+import { OecProSDK } from '@voxgig-sdk/oec-pro'
 ```
 
 ### Entity state
@@ -452,11 +455,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const moon = client.Moon()
-await moon.load({ planet_id: 'earth', id: 'luna' })
+const country = client.country
+await country.load({ id: "example_id" })
 
-// moon.data() now returns the loaded moon data
-// moon.match() returns { planet_id: 'earth', id: 'luna' }
+// country.data() now returns the loaded country data
+// country.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration

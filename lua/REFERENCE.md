@@ -92,7 +92,7 @@ same parameters as `direct()`.
 ## CountryEntity
 
 ```lua
-local country = client:country(nil)
+local country = client:Country(nil)
 ```
 
 ### Fields
@@ -112,7 +112,7 @@ local country = client:country(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:country():list()
+local results, err = client:Country():list()
 ```
 
 ### Common Methods
@@ -148,7 +148,7 @@ Return the entity name.
 ## ProductEntity
 
 ```lua
-local product = client:product(nil)
+local product = client:Product(nil)
 ```
 
 ### Fields
@@ -169,7 +169,7 @@ local product = client:product(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:product():list()
+local results, err = client:Product():list()
 ```
 
 ### Common Methods
@@ -205,7 +205,7 @@ Return the entity name.
 ## TradeEntity
 
 ```lua
-local trade = client:trade(nil)
+local trade = client:Trade(nil)
 ```
 
 ### Fields
@@ -226,7 +226,7 @@ local trade = client:trade(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:trade():list()
+local results, err = client:Trade():list()
 ```
 
 ### Common Methods

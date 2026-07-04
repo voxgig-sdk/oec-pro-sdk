@@ -208,39 +208,21 @@ class OecProSDK
   end
 
 
-  # Idiomatic facade: client.country.list / client.country.load({ "id" => ... })
-  def country
-    require_relative 'entity/country_entity'
-    @country ||= CountryEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.country instead.
+  # Canonical facade: client.Country.list / client.Country.load({ "id" => ... })
   def Country(data = nil)
     require_relative 'entity/country_entity'
     CountryEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.product.list / client.product.load({ "id" => ... })
-  def product
-    require_relative 'entity/product_entity'
-    @product ||= ProductEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.product instead.
+  # Canonical facade: client.Product.list / client.Product.load({ "id" => ... })
   def Product(data = nil)
     require_relative 'entity/product_entity'
     ProductEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.trade.list / client.trade.load({ "id" => ... })
-  def trade
-    require_relative 'entity/trade_entity'
-    @trade ||= TradeEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.trade instead.
+  # Canonical facade: client.Trade.list / client.Trade.load({ "id" => ... })
   def Trade(data = nil)
     require_relative 'entity/trade_entity'
     TradeEntity.new(self, data)

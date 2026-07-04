@@ -30,16 +30,14 @@ client = OecProSDK.new({
 })
 ```
 
-### 2. List countrys
+### 2. List country records
 
 ```ruby
 begin
-  result = client.country.list
-  if result.is_a?(Array)
-    result.each do |item|
-      d = item.data_get
-      puts "#{d["id"]} #{d["name"]}"
-    end
+  # list returns an Array of Country records — iterate directly.
+  countrys = client.Country.list
+  countrys.each do |item|
+    puts "#{item["id"]} #{item["name"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -87,13 +85,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = OecProSDK.test
+client = OecProSDK.test({
+  "entity" => { "country" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.country.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+country = client.Country.load({ "id" => "test01" })
+puts country
 ```
 
 ### Use a custom fetch function
@@ -263,7 +265,7 @@ API path: `/trade`
 
 ### Country
 
-Create an instance: `const country = client.country`
+Create an instance: `country = client.Country`
 
 #### Operations
 
@@ -283,14 +285,15 @@ Create an instance: `const country = client.country`
 
 #### Example: List
 
-```ts
-const countrys = await client.country.list()
+```ruby
+# list returns an Array of Country records (raises on error).
+countrys = client.Country.list
 ```
 
 
 ### Product
 
-Create an instance: `const product = client.product`
+Create an instance: `product = client.Product`
 
 #### Operations
 
@@ -311,14 +314,15 @@ Create an instance: `const product = client.product`
 
 #### Example: List
 
-```ts
-const products = await client.product.list()
+```ruby
+# list returns an Array of Product records (raises on error).
+products = client.Product.list
 ```
 
 
 ### Trade
 
-Create an instance: `const trade = client.trade`
+Create an instance: `trade = client.Trade`
 
 #### Operations
 
@@ -339,8 +343,9 @@ Create an instance: `const trade = client.trade`
 
 #### Example: List
 
-```ts
-const trades = await client.trade.list()
+```ruby
+# list returns an Array of Trade records (raises on error).
+trades = client.Trade.list
 ```
 
 
@@ -415,7 +420,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-country = client.country
+country = client.Country
 country.load({ "id" => "example_id" })
 
 # country.data_get now returns the loaded country data

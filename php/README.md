@@ -31,18 +31,16 @@ $client = new OecProSDK([
 ]);
 ```
 
-### 2. List countrys
+### 2. List country records
 
 ```php
 try {
-    $result = $client->country()->list();
-    if (is_array($result)) {
-        foreach ($result as $item) {
-            $d = $item->data_get();
-            echo $d["id"] . " " . $d["name"] . "\n";
-        }
+    // list() returns an array of Country records — iterate directly.
+    $countrys = $client->Country()->list();
+    foreach ($countrys as $item) {
+        echo $item["id"] . " " . $item["name"] . "\n";
     }
-} catch (\Exception $err) {
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -88,13 +86,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = OecProSDK::test();
+$client = OecProSDK::test([
+    "entity" => ["country" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->country()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$country = $client->Country()->load(["id" => "test01"]);
+print_r($country);
 ```
 
 ### Use a custom fetch function
@@ -268,7 +270,7 @@ API path: `/trade`
 
 ### Country
 
-Create an instance: `const country = client.country`
+Create an instance: `$country = $client->Country();`
 
 #### Operations
 
@@ -288,14 +290,15 @@ Create an instance: `const country = client.country`
 
 #### Example: List
 
-```ts
-const countrys = await client.country.list()
+```php
+// list() returns an array of Country records (throws on error).
+$countrys = $client->Country()->list();
 ```
 
 
 ### Product
 
-Create an instance: `const product = client.product`
+Create an instance: `$product = $client->Product();`
 
 #### Operations
 
@@ -316,14 +319,15 @@ Create an instance: `const product = client.product`
 
 #### Example: List
 
-```ts
-const products = await client.product.list()
+```php
+// list() returns an array of Product records (throws on error).
+$products = $client->Product()->list();
 ```
 
 
 ### Trade
 
-Create an instance: `const trade = client.trade`
+Create an instance: `$trade = $client->Trade();`
 
 #### Operations
 
@@ -344,8 +348,9 @@ Create an instance: `const trade = client.trade`
 
 #### Example: List
 
-```ts
-const trades = await client.trade.list()
+```php
+// list() returns an array of Trade records (throws on error).
+$trades = $client->Trade()->list();
 ```
 
 
@@ -420,7 +425,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$country = $client->country();
+$country = $client->Country();
 $country->load(["id" => "example_id"]);
 
 // $country->dataGet() now returns the loaded country data

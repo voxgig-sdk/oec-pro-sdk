@@ -95,7 +95,7 @@ same parameters as `direct()`. Raises on error.
 ## CountryEntity
 
 ```ruby
-country = client.country
+country = client.Country
 ```
 
 ### Fields
@@ -115,7 +115,7 @@ country = client.country
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.country.list(nil)
+results = client.Country.list(nil)
 ```
 
 ### Common Methods
@@ -151,7 +151,7 @@ Return the entity name.
 ## ProductEntity
 
 ```ruby
-product = client.product
+product = client.Product
 ```
 
 ### Fields
@@ -172,7 +172,7 @@ product = client.product
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.product.list(nil)
+results = client.Product.list(nil)
 ```
 
 ### Common Methods
@@ -208,7 +208,7 @@ Return the entity name.
 ## TradeEntity
 
 ```ruby
-trade = client.trade
+trade = client.Trade
 ```
 
 ### Fields
@@ -229,7 +229,7 @@ trade = client.trade
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.trade.list(nil)
+results = client.Trade.list(nil)
 ```
 
 ### Common Methods

@@ -206,42 +206,21 @@ class OecProSDK {
 
 
 
-  _country?: CountryEntity
-
-  // Idiomatic facade: `client.country.list()` / `client.country.load({ id })`.
-  get country(): CountryEntity {
-    return (this._country ??= new CountryEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.country` instead. */
+  // Entity access: `client.Country().list()` / `client.Country().load({ id })`.
   Country(data?: any) {
     const self = this
     return new CountryEntity(self,data)
   }
 
 
-  _product?: ProductEntity
-
-  // Idiomatic facade: `client.product.list()` / `client.product.load({ id })`.
-  get product(): ProductEntity {
-    return (this._product ??= new ProductEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.product` instead. */
+  // Entity access: `client.Product().list()` / `client.Product().load({ id })`.
   Product(data?: any) {
     const self = this
     return new ProductEntity(self,data)
   }
 
 
-  _trade?: TradeEntity
-
-  // Idiomatic facade: `client.trade.list()` / `client.trade.load({ id })`.
-  get trade(): TradeEntity {
-    return (this._trade ??= new TradeEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.trade` instead. */
+  // Entity access: `client.Trade().list()` / `client.Trade().load({ id })`.
   Trade(data?: any) {
     const self = this
     return new TradeEntity(self,data)

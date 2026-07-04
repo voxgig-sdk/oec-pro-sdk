@@ -94,7 +94,7 @@ Prepare a fetch definition without sending the request. Returns the
 ## CountryEntity
 
 ```php
-$country = $client->country();
+$country = $client->Country();
 ```
 
 ### Fields
@@ -114,7 +114,7 @@ $country = $client->country();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->country()->list([]);
+$results = $client->Country()->list([]);
 ```
 
 ### Common Methods
@@ -150,7 +150,7 @@ Return the entity name.
 ## ProductEntity
 
 ```php
-$product = $client->product();
+$product = $client->Product();
 ```
 
 ### Fields
@@ -171,7 +171,7 @@ $product = $client->product();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->product()->list([]);
+$results = $client->Product()->list([]);
 ```
 
 ### Common Methods
@@ -207,7 +207,7 @@ Return the entity name.
 ## TradeEntity
 
 ```php
-$trade = $client->trade();
+$trade = $client->Trade();
 ```
 
 ### Fields
@@ -228,7 +228,7 @@ $trade = $client->trade();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->trade()->list([]);
+$results = $client->Trade()->list([]);
 ```
 
 ### Common Methods

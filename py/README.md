@@ -34,14 +34,16 @@ client = OecProSDK({
 })
 ```
 
-### 2. List countrys
+### 2. List country records
+
+`list()` returns a `list` of records (each a `dict`) and raises on
+error — iterate it directly.
 
 ```python
 try:
-    result = client.country.list()
-    for item in result:
-        d = item.data_get()
-        print(d["id"], d["name"])
+    countrys = client.Country().list({})
+    for country in countrys:
+        print(country)
 except Exception as err:
     print(f"list failed: {err}")
 ```
@@ -89,8 +91,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = OecProSDK.test()
 
-result = client.country.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+country = client.Country().load({"id": "test01"})
+# country contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -261,7 +264,7 @@ API path: `/trade`
 
 ### Country
 
-Create an instance: `const country = client.country`
+Create an instance: `country = client.Country()`
 
 #### Operations
 
@@ -281,14 +284,14 @@ Create an instance: `const country = client.country`
 
 #### Example: List
 
-```ts
-const countrys = await client.country.list()
+```python
+countrys = client.Country().list({})
 ```
 
 
 ### Product
 
-Create an instance: `const product = client.product`
+Create an instance: `product = client.Product()`
 
 #### Operations
 
@@ -309,14 +312,14 @@ Create an instance: `const product = client.product`
 
 #### Example: List
 
-```ts
-const products = await client.product.list()
+```python
+products = client.Product().list({})
 ```
 
 
 ### Trade
 
-Create an instance: `const trade = client.trade`
+Create an instance: `trade = client.Trade()`
 
 #### Operations
 
@@ -337,8 +340,8 @@ Create an instance: `const trade = client.trade`
 
 #### Example: List
 
-```ts
-const trades = await client.trade.list()
+```python
+trades = client.Trade().list({})
 ```
 
 
@@ -412,7 +415,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-country = client.country
+country = client.Country()
 country.load({"id": "example_id"})
 
 # country.data_get() now returns the loaded country data

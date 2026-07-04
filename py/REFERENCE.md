@@ -89,7 +89,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## CountryEntity
 
 ```python
-country = client.country
+country = client.Country()
 ```
 
 ### Fields
@@ -109,7 +109,9 @@ country = client.country
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.country.list({})
+results = client.Country().list({})
+for country in results:
+    print(country)
 ```
 
 ### Common Methods
@@ -144,7 +146,7 @@ Return the entity name.
 ## ProductEntity
 
 ```python
-product = client.product
+product = client.Product()
 ```
 
 ### Fields
@@ -165,7 +167,9 @@ product = client.product
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.product.list({})
+results = client.Product().list({})
+for product in results:
+    print(product)
 ```
 
 ### Common Methods
@@ -200,7 +204,7 @@ Return the entity name.
 ## TradeEntity
 
 ```python
-trade = client.trade
+trade = client.Trade()
 ```
 
 ### Fields
@@ -221,7 +225,9 @@ trade = client.trade
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.trade.list({})
+results = client.Trade().list({})
+for trade in results:
+    print(trade)
 ```
 
 ### Common Methods

@@ -4,67 +4,65 @@
 # params (op.<name>.points[].args.params[]). Field/param types come from the
 # canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 # @voxgig/apidef VALID_CANON). Do not edit by hand.
+#
+# These are TypedDicts, not dataclasses: the SDK ops return/accept plain dicts
+# at runtime, and a TypedDict IS a dict shape, so the types match the runtime.
+# Optional (req:false) keys are modelled as TypedDict key-optionality
+# (total=False), split into a required base + total=False subclass when a type
+# has both required and optional keys.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-from typing import Optional, Any
+from typing import TypedDict, Any
 
 
-@dataclass
-class Country:
-    code: Optional[str] = None
-    continent: Optional[str] = None
-    id: Optional[str] = None
-    name: Optional[str] = None
-    region: Optional[str] = None
+class Country(TypedDict, total=False):
+    code: str
+    continent: str
+    id: str
+    name: str
+    region: str
 
 
-@dataclass
-class CountryListMatch:
-    code: Optional[str] = None
-    continent: Optional[str] = None
-    id: Optional[str] = None
-    name: Optional[str] = None
-    region: Optional[str] = None
+class CountryListMatch(TypedDict, total=False):
+    code: str
+    continent: str
+    id: str
+    name: str
+    region: str
 
 
-@dataclass
-class Product:
-    classification: Optional[str] = None
-    code: Optional[str] = None
-    id: Optional[str] = None
-    level: Optional[int] = None
-    name: Optional[str] = None
-    parent_id: Optional[str] = None
+class Product(TypedDict, total=False):
+    classification: str
+    code: str
+    id: str
+    level: int
+    name: str
+    parent_id: str
 
 
-@dataclass
-class ProductListMatch:
-    classification: Optional[str] = None
-    code: Optional[str] = None
-    id: Optional[str] = None
-    level: Optional[int] = None
-    name: Optional[str] = None
-    parent_id: Optional[str] = None
+class ProductListMatch(TypedDict, total=False):
+    classification: str
+    code: str
+    id: str
+    level: int
+    name: str
+    parent_id: str
 
 
-@dataclass
-class Trade:
-    destination_id: Optional[str] = None
-    export_value: Optional[float] = None
-    import_value: Optional[float] = None
-    origin_id: Optional[str] = None
-    product_id: Optional[str] = None
-    year: Optional[int] = None
+class Trade(TypedDict, total=False):
+    destination_id: str
+    export_value: float
+    import_value: float
+    origin_id: str
+    product_id: str
+    year: int
 
 
-@dataclass
-class TradeListMatch:
-    destination_id: Optional[str] = None
-    export_value: Optional[float] = None
-    import_value: Optional[float] = None
-    origin_id: Optional[str] = None
-    product_id: Optional[str] = None
-    year: Optional[int] = None
-
+class TradeListMatch(TypedDict, total=False):
+    destination_id: str
+    export_value: float
+    import_value: float
+    origin_id: str
+    product_id: str
+    year: int

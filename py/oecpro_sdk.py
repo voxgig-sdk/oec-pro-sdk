@@ -220,57 +220,27 @@ class OecProSDK:
         }
 
 
-    @property
-    def country(self):
-        """Idiomatic facade: client.country.list() / client.country.load({"id": ...})."""
-        from entity.country_entity import CountryEntity
-        cached = getattr(self, "_country", None)
-        if cached is None:
-            cached = CountryEntity(self, None)
-            self._country = cached
-        return cached
-
-    def Country(self, data=None):
-        # Deprecated: use client.country instead.
+    def Country(self, data=None) -> "CountryEntity":
+        """Entity factory: client.Country().list({}) / client.Country().load({"id": ...})."""
         from entity.country_entity import CountryEntity
         return CountryEntity(self, data)
 
 
-    @property
-    def product(self):
-        """Idiomatic facade: client.product.list() / client.product.load({"id": ...})."""
-        from entity.product_entity import ProductEntity
-        cached = getattr(self, "_product", None)
-        if cached is None:
-            cached = ProductEntity(self, None)
-            self._product = cached
-        return cached
-
-    def Product(self, data=None):
-        # Deprecated: use client.product instead.
+    def Product(self, data=None) -> "ProductEntity":
+        """Entity factory: client.Product().list({}) / client.Product().load({"id": ...})."""
         from entity.product_entity import ProductEntity
         return ProductEntity(self, data)
 
 
-    @property
-    def trade(self):
-        """Idiomatic facade: client.trade.list() / client.trade.load({"id": ...})."""
-        from entity.trade_entity import TradeEntity
-        cached = getattr(self, "_trade", None)
-        if cached is None:
-            cached = TradeEntity(self, None)
-            self._trade = cached
-        return cached
-
-    def Trade(self, data=None):
-        # Deprecated: use client.trade instead.
+    def Trade(self, data=None) -> "TradeEntity":
+        """Entity factory: client.Trade().list({}) / client.Trade().load({"id": ...})."""
         from entity.trade_entity import TradeEntity
         return TradeEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "OecProSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -290,3 +260,11 @@ class OecProSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.country_entity import CountryEntity
+    from entity.product_entity import ProductEntity
+    from entity.trade_entity import TradeEntity

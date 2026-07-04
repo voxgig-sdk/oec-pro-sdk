@@ -28,9 +28,11 @@ const client = new OecProSDK({
   apikey: process.env.OEC_PRO_APIKEY,
 })
 
-// List all countrys
-const countrys = await client.country.list()
-console.log(countrys.data)
+// List all countrys (returns Country[])
+const countrys = await client.Country().list()
+for (const country of countrys) {
+  console.log(country)
+}
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -90,9 +92,10 @@ client = OecProSDK({
     "apikey": os.environ.get("OEC_PRO_APIKEY"),
 })
 
-# List all countrys
-countrys = client.country.list()
-print(countrys)
+# List all countrys (returns a list, raises on error)
+countrys = client.Country().list({})
+for country in countrys:
+    print(country)
 ```
 
 ### PHP
@@ -105,8 +108,8 @@ $client = new OecProSDK([
     "apikey" => getenv("OEC_PRO_APIKEY"),
 ]);
 
-// List all countrys (throws on error)
-$countrys = $client->country()->list();
+// List all countrys (returns an array; throws on error)
+$countrys = $client->Country()->list();
 print_r($countrys);
 ```
 
@@ -133,8 +136,8 @@ client = OecProSDK.new({
   "apikey" => ENV["OEC_PRO_APIKEY"],
 })
 
-# List all countrys
-countrys = client.country.list
+# List all countrys (returns an Array; raises on error)
+countrys = client.Country.list
 puts countrys
 ```
 
@@ -148,7 +151,7 @@ local client = sdk.new({
 })
 
 -- List all countrys
-local countrys, err = client:country():list()
+local countrys, err = client:Country():list()
 print(countrys)
 ```
 
@@ -161,22 +164,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = OecProSDK.test()
-const result = await client.country.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const country = await client.Country().load({ id: 'test01' })
+// country is a bare Country populated with mock data
+console.log(country)
 ```
 
 ### Python
 
 ```python
 client = OecProSDK.test()
-result = client.country.load({"id": "test01"})
+country = client.Country().load({"id": "test01"})
+print(country)
 ```
 
 ### PHP
 
 ```php
-$client = OecProSDK::test();
-$result = $client->country()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = OecProSDK::test([
+    "entity" => ["country" => ["test01" => ["id" => "test01"]]],
+]);
+$country = $client->Country()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -191,15 +199,18 @@ result, err := client.Country(nil).Load(
 ### Ruby
 
 ```ruby
-client = OecProSDK.test
-result = client.country.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = OecProSDK.test({
+  "entity" => { "country" => { "test01" => { "id" => "test01" } } },
+})
+country = client.Country.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:country():load({ id = "test01" })
+local result, err = client:Country():load({ id = "test01" })
 ```
 
 ## How it works
@@ -247,6 +258,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

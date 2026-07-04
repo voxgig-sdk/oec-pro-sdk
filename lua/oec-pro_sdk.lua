@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:country():list() / client:country():load({ id = ... })
-function OecProSDK:country(data)
+-- Idiomatic facade: client:Country():list() / client:Country():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function OecProSDK:Country(data)
   local EntityMod = require("entity.country_entity")
   if data == nil then
     if self._country == nil then
@@ -256,15 +257,10 @@ function OecProSDK:country(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:country() instead.
-function OecProSDK:Country(data)
-  local EntityMod = require("entity.country_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:product():list() / client:product():load({ id = ... })
-function OecProSDK:product(data)
+-- Idiomatic facade: client:Product():list() / client:Product():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function OecProSDK:Product(data)
   local EntityMod = require("entity.product_entity")
   if data == nil then
     if self._product == nil then
@@ -275,15 +271,10 @@ function OecProSDK:product(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:product() instead.
-function OecProSDK:Product(data)
-  local EntityMod = require("entity.product_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:trade():list() / client:trade():load({ id = ... })
-function OecProSDK:trade(data)
+-- Idiomatic facade: client:Trade():list() / client:Trade():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function OecProSDK:Trade(data)
   local EntityMod = require("entity.trade_entity")
   if data == nil then
     if self._trade == nil then
@@ -291,12 +282,6 @@ function OecProSDK:trade(data)
     end
     return self._trade
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:trade() instead.
-function OecProSDK:Trade(data)
-  local EntityMod = require("entity.trade_entity")
   return EntityMod.new(self, data)
 end
 

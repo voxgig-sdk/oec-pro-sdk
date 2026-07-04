@@ -233,10 +233,10 @@ class OecProSDK
 
     private $_country = null;
 
-    // Idiomatic facade: $client->country()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Country() (PHP method
-    // names are case-insensitive).
-    public function country($data = null)
+    // Canonical facade: $client->Country()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->country()
+    // resolves here too.
+    public function Country($data = null)
     {
         require_once __DIR__ . '/entity/country_entity.php';
         if ($data === null) {
@@ -251,10 +251,10 @@ class OecProSDK
 
     private $_product = null;
 
-    // Idiomatic facade: $client->product()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Product() (PHP method
-    // names are case-insensitive).
-    public function product($data = null)
+    // Canonical facade: $client->Product()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->product()
+    // resolves here too.
+    public function Product($data = null)
     {
         require_once __DIR__ . '/entity/product_entity.php';
         if ($data === null) {
@@ -269,10 +269,10 @@ class OecProSDK
 
     private $_trade = null;
 
-    // Idiomatic facade: $client->trade()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Trade() (PHP method
-    // names are case-insensitive).
-    public function trade($data = null)
+    // Canonical facade: $client->Trade()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->trade()
+    // resolves here too.
+    public function Trade($data = null)
     {
         require_once __DIR__ . '/entity/trade_entity.php';
         if ($data === null) {

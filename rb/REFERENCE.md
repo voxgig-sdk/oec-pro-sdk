@@ -8,7 +8,7 @@ Complete API reference for the OecPro Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'oec-pro_sdk'
+require_relative 'OecPro_sdk'
 
 client = OecProSDK.new(options)
 ```
@@ -102,20 +102,20 @@ country = client.Country
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `code` | ``$STRING`` | No |  |
-| `continent` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `region` | ``$STRING`` | No |  |
+| `code` | `String` | No |  |
+| `continent` | `String` | No |  |
+| `id` | `String` | No |  |
+| `name` | `String` | No |  |
+| `region` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Country.list(nil)
+results = client.Country.list
 ```
 
 ### Common Methods
@@ -158,21 +158,21 @@ product = client.Product
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `classification` | ``$STRING`` | No |  |
-| `code` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `level` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `parent_id` | ``$STRING`` | No |  |
+| `classification` | `String` | No |  |
+| `code` | `String` | No |  |
+| `id` | `String` | No |  |
+| `level` | `Integer` | No |  |
+| `name` | `String` | No |  |
+| `parent_id` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Product.list(nil)
+results = client.Product.list
 ```
 
 ### Common Methods
@@ -215,21 +215,21 @@ trade = client.Trade
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `destination_id` | ``$STRING`` | No |  |
-| `export_value` | ``$NUMBER`` | No |  |
-| `import_value` | ``$NUMBER`` | No |  |
-| `origin_id` | ``$STRING`` | No |  |
-| `product_id` | ``$STRING`` | No |  |
-| `year` | ``$INTEGER`` | No |  |
+| `destination_id` | `String` | No |  |
+| `export_value` | `Float` | No |  |
+| `import_value` | `Float` | No |  |
+| `origin_id` | `String` | No |  |
+| `product_id` | `String` | No |  |
+| `year` | `Integer` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Trade.list(nil)
+results = client.Trade.list
 ```
 
 ### Common Methods

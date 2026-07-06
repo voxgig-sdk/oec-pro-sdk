@@ -22,7 +22,7 @@ class Country
     public ?string $region = null;
 }
 
-/** Match filter for Country#list (any subset of Country fields). */
+/** Request payload for Country#list. */
 class CountryListMatch
 {
     public ?string $code = null;
@@ -43,7 +43,7 @@ class Product
     public ?string $parent_id = null;
 }
 
-/** Match filter for Product#list (any subset of Product fields). */
+/** Request payload for Product#list. */
 class ProductListMatch
 {
     public ?string $classification = null;
@@ -65,7 +65,7 @@ class Trade
     public ?int $year = null;
 }
 
-/** Match filter for Trade#list (any subset of Trade fields). */
+/** Request payload for Trade#list. */
 class TradeListMatch
 {
     public ?string $destination_id = null;

@@ -99,11 +99,11 @@ local country = client:Country(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `code` | ``$STRING`` | No |  |
-| `continent` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `region` | ``$STRING`` | No |  |
+| `code` | `string` | No |  |
+| `continent` | `string` | No |  |
+| `id` | `string` | No |  |
+| `name` | `string` | No |  |
+| `region` | `string` | No |  |
 
 ### Operations
 
@@ -155,12 +155,12 @@ local product = client:Product(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `classification` | ``$STRING`` | No |  |
-| `code` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `level` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `parent_id` | ``$STRING`` | No |  |
+| `classification` | `string` | No |  |
+| `code` | `string` | No |  |
+| `id` | `string` | No |  |
+| `level` | `number` | No |  |
+| `name` | `string` | No |  |
+| `parent_id` | `string` | No |  |
 
 ### Operations
 
@@ -212,12 +212,12 @@ local trade = client:Trade(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `destination_id` | ``$STRING`` | No |  |
-| `export_value` | ``$NUMBER`` | No |  |
-| `import_value` | ``$NUMBER`` | No |  |
-| `origin_id` | ``$STRING`` | No |  |
-| `product_id` | ``$STRING`` | No |  |
-| `year` | ``$INTEGER`` | No |  |
+| `destination_id` | `string` | No |  |
+| `export_value` | `number` | No |  |
+| `import_value` | `number` | No |  |
+| `origin_id` | `string` | No |  |
+| `product_id` | `string` | No |  |
+| `year` | `number` | No |  |
 
 ### Operations
 

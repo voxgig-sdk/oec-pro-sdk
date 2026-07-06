@@ -33,7 +33,7 @@ Country = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Country#list (any subset of Country fields).
+# Request payload for Country#list.
 #
 # @!attribute [rw] code
 #   @return [String, nil]
@@ -87,7 +87,7 @@ Product = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Product#list (any subset of Product fields).
+# Request payload for Product#list.
 #
 # @!attribute [rw] classification
 #   @return [String, nil]
@@ -145,7 +145,7 @@ Trade = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Trade#list (any subset of Trade fields).
+# Request payload for Trade#list.
 #
 # @!attribute [rw] destination_id
 #   @return [String, nil]

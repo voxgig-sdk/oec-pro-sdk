@@ -13,7 +13,13 @@ export interface Country {
   region?: string
 }
 
-export type CountryListMatch = Partial<Country>
+export interface CountryListMatch {
+  code?: string
+  continent?: string
+  id?: string
+  name?: string
+  region?: string
+}
 
 export interface Product {
   classification?: string
@@ -24,7 +30,14 @@ export interface Product {
   parent_id?: string
 }
 
-export type ProductListMatch = Partial<Product>
+export interface ProductListMatch {
+  classification?: string
+  code?: string
+  id?: string
+  level?: number
+  name?: string
+  parent_id?: string
+}
 
 export interface Trade {
   destination_id?: string
@@ -35,5 +48,12 @@ export interface Trade {
   year?: number
 }
 
-export type TradeListMatch = Partial<Trade>
+export interface TradeListMatch {
+  destination_id?: string
+  export_value?: number
+  import_value?: number
+  origin_id?: string
+  product_id?: string
+  year?: number
+}
 

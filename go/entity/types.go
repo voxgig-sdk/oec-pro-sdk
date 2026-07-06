@@ -17,8 +17,7 @@ type Country struct {
 	Region *string `json:"region,omitempty"`
 }
 
-// CountryListMatch mirrors the country fields as an all-optional match
-// filter (Go analog of Partial<Country>).
+// CountryListMatch is the typed request payload for Country.ListTyped.
 type CountryListMatch struct {
 	Code *string `json:"code,omitempty"`
 	Continent *string `json:"continent,omitempty"`
@@ -37,8 +36,7 @@ type Product struct {
 	ParentId *string `json:"parent_id,omitempty"`
 }
 
-// ProductListMatch mirrors the product fields as an all-optional match
-// filter (Go analog of Partial<Product>).
+// ProductListMatch is the typed request payload for Product.ListTyped.
 type ProductListMatch struct {
 	Classification *string `json:"classification,omitempty"`
 	Code *string `json:"code,omitempty"`
@@ -58,8 +56,7 @@ type Trade struct {
 	Year *int `json:"year,omitempty"`
 }
 
-// TradeListMatch mirrors the trade fields as an all-optional match
-// filter (Go analog of Partial<Trade>).
+// TradeListMatch is the typed request payload for Trade.ListTyped.
 type TradeListMatch struct {
 	DestinationId *string `json:"destination_id,omitempty"`
 	ExportValue *float64 `json:"export_value,omitempty"`

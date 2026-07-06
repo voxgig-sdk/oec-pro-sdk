@@ -221,19 +221,19 @@ class OecProSDK:
 
 
     def Country(self, data=None) -> "CountryEntity":
-        """Entity factory: client.Country().list({}) / client.Country().load({"id": ...})."""
+        """Entity factory: client.Country().list() / client.Country().load({"id": ...})."""
         from entity.country_entity import CountryEntity
         return CountryEntity(self, data)
 
 
     def Product(self, data=None) -> "ProductEntity":
-        """Entity factory: client.Product().list({}) / client.Product().load({"id": ...})."""
+        """Entity factory: client.Product().list() / client.Product().load({"id": ...})."""
         from entity.product_entity import ProductEntity
         return ProductEntity(self, data)
 
 
     def Trade(self, data=None) -> "TradeEntity":
-        """Entity factory: client.Trade().list({}) / client.Trade().load({"id": ...})."""
+        """Entity factory: client.Trade().list() / client.Trade().load({"id": ...})."""
         from entity.trade_entity import TradeEntity
         return TradeEntity(self, data)
 

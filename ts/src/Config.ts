@@ -39,7 +39,7 @@ class Config {
     base: 'https://oec.world/api',
 
     auth: {
-      prefix: 'Bearer',
+      prefix: '',
     },
 
     headers: {

@@ -100,6 +100,7 @@ same parameters as `Direct()`.
 
 ```go
 country := client.Country(nil)
+fmt.Println(country.GetName()) // "country"
 ```
 
 ### Fields
@@ -120,6 +121,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Country(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -150,6 +155,7 @@ Return the entity name.
 
 ```go
 product := client.Product(nil)
+fmt.Println(product.GetName()) // "product"
 ```
 
 ### Fields
@@ -171,6 +177,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Product(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -201,6 +211,7 @@ Return the entity name.
 
 ```go
 trade := client.Trade(nil)
+fmt.Println(trade.GetName()) // "trade"
 ```
 
 ### Fields
@@ -222,6 +233,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Trade(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods

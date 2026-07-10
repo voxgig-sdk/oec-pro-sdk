@@ -6,9 +6,6 @@
     },
     "kit": {
       "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
         "docs_order": [
           "ts",
           "py",
@@ -531,14 +528,24 @@
           "url": "https://oec.world/en/resources/documentation"
         },
         "description": "The OEC Pro API allows users to access a wide range of international trade data through various endpoints. It provides the ability to construct specific data queries and retrieve meaningful insights from the Observatory of Economic Complexity's datasets.",
+        "meta_source": "https://www.freepublicapis.com",
+        "security": {
+          "in": "header",
+          "name": "X-API-Key",
+          "prefix": "",
+          "scheme": "ApiKeyAuth",
+          "type": "apiKey"
+        },
         "servers": [
           {
             "description": "Production server",
             "url": "https://oec.world/api"
           }
         ],
+        "summary": "The OEC Pro API allows users to access a wide range of international trade data through various endpoints.",
         "title": "OEC Pro API",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "website": "https://oec.world"
       },
       "option": {},
       "target": {
@@ -591,6 +598,9 @@
           },
           "name": "go-cli",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
@@ -641,6 +651,9 @@
           },
           "name": "go-mcp",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },

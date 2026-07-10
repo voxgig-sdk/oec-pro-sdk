@@ -21,7 +21,7 @@ class OecProConfig
             "options" => [
                 "base" => "https://oec.world/api",
                 "auth" => [
-                    "prefix" => "Bearer",
+                    "prefix" => "",
                 ],
                 "headers" => [
           'content-type' => 'application/json',

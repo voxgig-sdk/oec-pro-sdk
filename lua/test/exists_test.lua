@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- OecPro SDK exists test
 
 local sdk = require("oec-pro_sdk")
 

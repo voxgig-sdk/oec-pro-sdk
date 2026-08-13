@@ -71,12 +71,12 @@ Every entity operation returns `(value, error)`. Check `err` before
 using the value — there is no exception to catch:
 
 ```go
-countrys, err := client.Country(nil).List(nil, nil)
+products, err := client.Product(nil).List(nil, nil)
 if err != nil {
     // handle err
     return
 }
-_ = countrys
+_ = products
 ```
 
 `Direct` follows the same `(value, error)` convention:
@@ -140,13 +140,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-country, err := client.Country(nil).List(
+product, err := client.Product(nil).List(
     nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(country) // the returned mock data
+fmt.Println(product) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -480,11 +480,11 @@ Entity instances are stateful. After a successful `List`, the entity
 stores the returned data and match criteria internally.
 
 ```go
-country := client.Country(nil)
-country.List(nil, nil)
+product := client.Product(nil)
+product.List(nil, nil)
 
-// country.Data() now returns the country data from the last list
-// country.Match() returns the last match criteria
+// product.Data() now returns the product data from the last list
+// product.Match() returns the last match criteria
 ```
 
 Call `Make()` to create a fresh instance with the same configuration

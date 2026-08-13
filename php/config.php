@@ -99,6 +99,7 @@ class OecProConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/countries',
                   'parts' => [
@@ -112,7 +113,7 @@ class OecProConfig
                   ],
                   'transform' => [
                     'req' => '`reqdata`',
-                    'res' => '`body`',
+                    'res' => '`body.data`',
                   ],
                   'index$' => 0,
                 ],
@@ -213,6 +214,7 @@ class OecProConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/products',
                   'parts' => [
@@ -228,7 +230,7 @@ class OecProConfig
                   ],
                   'transform' => [
                     'req' => '`reqdata`',
-                    'res' => '`body`',
+                    'res' => '`body.data`',
                   ],
                   'index$' => 0,
                 ],
@@ -337,6 +339,7 @@ class OecProConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/trade',
                   'parts' => [
@@ -353,7 +356,7 @@ class OecProConfig
                   ],
                   'transform' => [
                     'req' => '`reqdata`',
-                    'res' => '`body`',
+                    'res' => '`body.data`',
                   ],
                   'index$' => 0,
                 ],

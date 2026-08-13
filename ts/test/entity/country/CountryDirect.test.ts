@@ -19,11 +19,15 @@ import {
 describe('CountryDirect', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when OECPRO_TEST_LIVE=TRUE.
-  afterEach(liveDelay('OECPRO_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when OEC_PRO_TEST_LIVE=TRUE.
+  afterEach(liveDelay('OEC_PRO_TEST_LIVE'))
 
   test('direct-exists', async () => {
     const sdk = new OecProSDK({
+      // Concrete base: a live construction must satisfy any server
+      // variables a templated base URL declares; overriding base with a
+      // literal (as the direct flow tests do) sidesteps the requirement.
+      base: 'http://localhost:8080',
       system: { fetch: async () => ({}) }
     })
     assert('function' === typeof sdk.direct)
@@ -77,19 +81,19 @@ function directSetup(mockres?: any) {
   const calls: any[] = []
 
   const env = envOverride({
-    'OECPRO_TEST_COUNTRY_ENTID': {},
-    'OECPRO_TEST_LIVE': 'FALSE',
-    'OECPRO_APIKEY': 'NONE',
+    'OEC_PRO_TEST_COUNTRY_ENTID': {},
+    'OEC_PRO_TEST_LIVE': 'FALSE',
+    'OEC_PRO_APIKEY': 'NONE',
   })
 
-  const live = 'TRUE' === env.OECPRO_TEST_LIVE
+  const live = 'TRUE' === env.OEC_PRO_TEST_LIVE
 
   if (live) {
     const client = new OecProSDK({
-      apikey: env.OECPRO_APIKEY,
+      apikey: env.OEC_PRO_APIKEY,
     })
 
-    let idmap: any = env['OECPRO_TEST_COUNTRY_ENTID']
+    let idmap: any = env['OEC_PRO_TEST_COUNTRY_ENTID']
     if ('string' === typeof idmap && idmap.startsWith('{')) {
       idmap = JSON.parse(idmap)
     }

@@ -56,7 +56,7 @@ Entity operations return `(value, err)`. Check `err` before using
 the value:
 
 ```lua
-local countrys, err = client:Country():list()
+local products, err = client:Product():list()
 if err then error(err) end
 ```
 
@@ -114,7 +114,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:Country():list()
+local result, err = client:Product():list()
 -- result is the returned data; err is set on failure
 ```
 
@@ -224,9 +224,9 @@ data **directly** — there is no wrapper:
 
 Check `err` first (it is non-`nil` on failure), then use `value`:
 
-    local country, err = client:Country():load()
+    local country, err = client:Country():list()
     if err then error(err) end
-    -- country is the loaded record
+    -- country is the record list
 
 Only `direct()` returns a response envelope — a `table` with `ok`,
 `status`, `headers`, and `data` keys.
@@ -441,11 +441,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local country = client:Country()
-country:list()
+local product = client:Product()
+product:list()
 
--- country:data_get() now returns the country data from the last list
--- country:match_get() returns the last match criteria
+-- product:data_get() now returns the product data from the last list
+-- product:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

@@ -26,8 +26,8 @@ import {
 describe('TradeEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when OECPRO_TEST_LIVE=TRUE.
-  afterEach(liveDelay('OECPRO_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when OEC_PRO_TEST_LIVE=TRUE.
+  afterEach(liveDelay('OEC_PRO_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = OecProSDK.test()
@@ -63,7 +63,7 @@ describe('TradeEntity', async () => {
     const trade_ref01_ent = client.Trade()
     const trade_ref01_match: any = {}
 
-    const trade_ref01_list = await trade_ref01_ent.list(trade_ref01_match)
+    const trade_ref01_list = (await trade_ref01_ent.list(trade_ref01_match)).map((e: any) => e.data())
 
 
   })

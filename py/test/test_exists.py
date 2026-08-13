@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# OecPro SDK exists test
 
 import pytest
 from oecpro_sdk import OecProSDK

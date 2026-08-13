@@ -38,18 +38,27 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = OecProSDK.test()
-const countrys = await client.Country().list()
-// countrys is an array of bare Country records populated with mock data
-console.log(countrys)
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = OecProSDK.test({
+  entity: {
+    product: {
+      test01: { id: 'test01' },
+    },
+  },
+})
+const products = await client.Product().list()
+// products is an array of Product entities, populated with mock data
+// — call products[0].data() for the record itself
+console.log(products)
 ```
 
 ### Python
 
 ```python
 client = OecProSDK.test()
-countrys = client.Country().list()
-print(countrys)
+products = client.Product().list()
+print(products)
 ```
 
 ### PHP
@@ -57,16 +66,16 @@ print(countrys)
 ```php
 // Seed fixture data so offline calls resolve without a live server.
 $client = OecProSDK::test([
-    "entity" => ["country" => ["test01" => []]],
+    "entity" => ["product" => ["test01" => []]],
 ]);
-$countrys = $client->Country()->list();
+$products = $client->Product()->list();
 ```
 
 ### Golang
 
 ```go
 client := sdk.Test()
-result, err := client.Country(nil).List(
+result, err := client.Product(nil).List(
     nil, nil,
 )
 ```
@@ -76,16 +85,16 @@ result, err := client.Country(nil).List(
 ```ruby
 # Seed fixture data so offline calls resolve without a live server.
 client = OecProSDK.test({
-  "entity" => { "country" => { "test01" => {} } },
+  "entity" => { "product" => { "test01" => {} } },
 })
-countrys = client.Country.list()
+products = client.Product.list()
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local results, err = client:Country():list()
+local results, err = client:Product():list()
 ```
 
 ## Packages
@@ -112,7 +121,7 @@ const client = new OecProSDK({
   apikey: process.env.OEC_PRO_APIKEY,
 })
 
-// List all countrys (returns Country[])
+// List all countrys (returns CountryEntity[] — .data() for the record)
 const countrys = await client.Country().list()
 for (const country of countrys) {
   console.log(country)
@@ -358,6 +367,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://oec.world/en/resources/documentation](https://oec.world/en/resources/documentation)
 

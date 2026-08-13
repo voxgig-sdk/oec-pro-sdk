@@ -23,8 +23,8 @@ module OecProTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("OECPRO_TEST_LIVE")
-    override = getenv("OECPRO_TEST_OVERRIDE")
+    live = getenv("OEC_PRO_TEST_LIVE")
+    override = getenv("OEC_PRO_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module OecProTestRunner
       end
     end
 
-    explain = getenv("OECPRO_TEST_EXPLAIN")
-    m["OECPRO_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("OEC_PRO_TEST_EXPLAIN")
+    m["OEC_PRO_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

@@ -43,8 +43,8 @@ class OecProTestRunner
 
     public static function env_override(array $m): array
     {
-        $live = self::getenv('OECPRO_TEST_LIVE');
-        $override = self::getenv('OECPRO_TEST_OVERRIDE');
+        $live = self::getenv('OEC_PRO_TEST_LIVE');
+        $override = self::getenv('OEC_PRO_TEST_OVERRIDE');
 
         if ($live === 'TRUE' || $override === 'TRUE') {
             foreach (array_keys($m) as $key) {
@@ -63,9 +63,9 @@ class OecProTestRunner
             }
         }
 
-        $explain = self::getenv('OECPRO_TEST_EXPLAIN');
+        $explain = self::getenv('OEC_PRO_TEST_EXPLAIN');
         if ($explain !== null && $explain !== '') {
-            $m['OECPRO_TEST_EXPLAIN'] = $explain;
+            $m['OEC_PRO_TEST_EXPLAIN'] = $explain;
         }
 
         return $m;

@@ -36,9 +36,10 @@ func TestCountryDirect(t *testing.T) {
 			"params": map[string]any{},
 		})
 		if setup.live {
-			// Live mode is lenient: synthetic IDs frequently 4xx and the
-			// list-response shape varies wildly across public APIs. Skip
-			// rather than fail when the call doesn't return a usable list.
+			// Live-mode leniency is a model decision
+			// (main.kit.test.live.strict): synthetic IDs 4xx constantly
+			// against an arbitrary public API, so the default SKIPS here.
+			// A project that owns its test server sets strict and FAILS.
 			if err != nil {
 				t.Skipf("list call failed (likely synthetic IDs against live API): %v", err)
 			}
@@ -91,21 +92,21 @@ func countryDirectSetup(mockres any) *countryDirectSetupResult {
 	calls := &[]map[string]any{}
 
 	env := envOverride(map[string]any{
-		"OECPRO_TEST_COUNTRY_ENTID": map[string]any{},
-		"OECPRO_TEST_LIVE":    "FALSE",
-		"OECPRO_APIKEY":       "NONE",
+		"OEC_PRO_TEST_COUNTRY_ENTID": map[string]any{},
+		"OEC_PRO_TEST_LIVE":    "FALSE",
+		"OEC_PRO_APIKEY":       "NONE",
 	})
 
-	live := env["OECPRO_TEST_LIVE"] == "TRUE"
+	live := env["OEC_PRO_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
-			"apikey": env["OECPRO_APIKEY"],
+			"apikey": env["OEC_PRO_APIKEY"],
 		}
 		client := sdk.NewOecProSDK(mergedOpts)
 
 		idmap := map[string]any{}
-		if entidRaw, ok := env["OECPRO_TEST_COUNTRY_ENTID"]; ok {
+		if entidRaw, ok := env["OEC_PRO_TEST_COUNTRY_ENTID"]; ok {
 			if entidStr, ok := entidRaw.(string); ok && strings.HasPrefix(entidStr, "{") {
 				json.Unmarshal([]byte(entidStr), &idmap)
 			} else if entidMap, ok := entidRaw.(map[string]any); ok {

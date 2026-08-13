@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from oecpro_sdk.utility.voxgig_struct import voxgig_struct as vs
 from oecpro_sdk import OecProSDK
-from core import helpers
+from oecpro_sdk.core import helpers
 from test import runner
 
 
@@ -58,16 +58,16 @@ def _product_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "OECPRO_TEST_PRODUCT_ENTID": {},
-        "OECPRO_TEST_LIVE": "FALSE",
-        "OECPRO_APIKEY": "NONE",
+        "OEC_PRO_TEST_PRODUCT_ENTID": {},
+        "OEC_PRO_TEST_LIVE": "FALSE",
+        "OEC_PRO_APIKEY": "NONE",
     })
 
-    live = env.get("OECPRO_TEST_LIVE") == "TRUE"
+    live = env.get("OEC_PRO_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
-            "apikey": env.get("OECPRO_APIKEY"),
+            "apikey": env.get("OEC_PRO_APIKEY"),
         }
         client = OecProSDK(merged_opts)
         return {

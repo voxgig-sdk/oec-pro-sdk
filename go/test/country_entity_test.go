@@ -92,7 +92,7 @@ func TestCountryEntity(t *testing.T) {
 		// The basic flow consumes synthetic IDs from the fixture. In live mode
 		// without an *_ENTID env override, those IDs hit the live API and 4xx.
 		if setup.syntheticOnly {
-			t.Skip("live entity test uses synthetic IDs from fixture — set OECPRO_TEST_COUNTRY_ENTID JSON to run live")
+			t.Skip("live entity test uses synthetic IDs from fixture — set OEC_PRO_TEST_COUNTRY_ENTID JSON to run live")
 			return
 		}
 		client := setup.client
@@ -160,38 +160,38 @@ func countryBasicSetup(extra map[string]any) *entityTestSetup {
 	// Detect ENTID env override before envOverride consumes it. When live
 	// mode is on without a real override, the basic test runs against synthetic
 	// IDs from the fixture and 4xx's. Surface this so the test can skip.
-	entidEnvRaw := os.Getenv("OECPRO_TEST_COUNTRY_ENTID")
+	entidEnvRaw := os.Getenv("OEC_PRO_TEST_COUNTRY_ENTID")
 	idmapOverridden := entidEnvRaw != "" && strings.HasPrefix(strings.TrimSpace(entidEnvRaw), "{")
 
 	env := envOverride(map[string]any{
-		"OECPRO_TEST_COUNTRY_ENTID": idmap,
-		"OECPRO_TEST_LIVE":      "FALSE",
-		"OECPRO_TEST_EXPLAIN":   "FALSE",
-		"OECPRO_APIKEY":         "NONE",
+		"OEC_PRO_TEST_COUNTRY_ENTID": idmap,
+		"OEC_PRO_TEST_LIVE":      "FALSE",
+		"OEC_PRO_TEST_EXPLAIN":   "FALSE",
+		"OEC_PRO_APIKEY":         "NONE",
 	})
 
-	idmapResolved := core.ToMapAny(env["OECPRO_TEST_COUNTRY_ENTID"])
+	idmapResolved := core.ToMapAny(env["OEC_PRO_TEST_COUNTRY_ENTID"])
 	if idmapResolved == nil {
 		idmapResolved = core.ToMapAny(idmap)
 	}
 
-	if env["OECPRO_TEST_LIVE"] == "TRUE" {
+	if env["OEC_PRO_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
-				"apikey": env["OECPRO_APIKEY"],
+				"apikey": env["OEC_PRO_APIKEY"],
 			},
 			extra,
 		})
 		client = sdk.NewOecProSDK(core.ToMapAny(mergedOpts))
 	}
 
-	live := env["OECPRO_TEST_LIVE"] == "TRUE"
+	live := env["OEC_PRO_TEST_LIVE"] == "TRUE"
 	return &entityTestSetup{
 		client:        client,
 		data:          entityData,
 		idmap:         idmapResolved,
 		env:           env,
-		explain:       env["OECPRO_TEST_EXPLAIN"] == "TRUE",
+		explain:       env["OEC_PRO_TEST_EXPLAIN"] == "TRUE",
 		live:          live,
 		syntheticOnly: live && !idmapOverridden,
 		now:           time.Now().UnixMilli(),

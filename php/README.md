@@ -55,7 +55,7 @@ Entity operations throw a `\Throwable` on failure, so wrap them in
 
 ```php
 try {
-    $countrys = $client->Country()->list();
+    $products = $client->Product()->list();
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -127,9 +127,10 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = OecProSDK::test();
 
-// Entity ops return the bare mock record (throws on error).
-$country = $client->Country()->list();
-print_r($country);
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
+$product = $client->Product()->list();
+print_r($product);
 ```
 
 ### Use a custom fetch function
@@ -230,7 +231,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -459,11 +460,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$country = $client->Country();
-$country->list();
+$product = $client->Product();
+$product->list();
 
-// $country->data_get() now returns the country data from the last list
-// $country->match_get() returns the last match criteria
+// $product->data_get() now returns the product data from the last list
+// $product->match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

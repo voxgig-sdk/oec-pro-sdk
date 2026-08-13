@@ -74,7 +74,7 @@ main: kit: entity: country: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.data`"
           }
         }
       ]

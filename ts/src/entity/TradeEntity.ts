@@ -37,7 +37,7 @@ class TradeEntity extends OecProEntityBase<Trade> {
 
 
 
-  async list(this: any, reqmatch?: TradeListMatch, ctrl?: Control): Promise<Trade[]> {
+  async list(this: any, reqmatch?: TradeListMatch, ctrl?: Control): Promise<TradeEntity[]> {
 
     const utility = this._utility
 

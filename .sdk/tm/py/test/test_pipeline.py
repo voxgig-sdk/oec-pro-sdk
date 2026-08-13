@@ -16,11 +16,11 @@
 import pytest
 
 from projectname_sdk import OecProSDK
-from core.error import OecProError
-from core.result import OecProResult
-from core.response import OecProResponse
-from core.spec import OecProSpec
-from feature.base_feature import OecProBaseFeature
+from projectname_sdk.core.error import OecProError
+from projectname_sdk.core.result import OecProResult
+from projectname_sdk.core.response import OecProResponse
+from projectname_sdk.core.spec import OecProSpec
+from projectname_sdk.feature.base_feature import OecProBaseFeature
 
 
 def _client():

@@ -53,7 +53,7 @@ Entity operations raise on failure, so rescue them:
 
 ```ruby
 begin
-  countrys = client.Country.list()
+  products = client.Product.list()
 rescue => err
   warn "list failed: #{err}"
 end
@@ -121,9 +121,10 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = OecProSDK.test
 
-# Entity ops return the bare mock record (raises on error).
-country = client.Country.list()
-puts country
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
+product = client.Product.list()
+puts product
 ```
 
 ### Use a custom fetch function
@@ -449,11 +450,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-country = client.Country
-country.list()
+product = client.Product
+product.list()
 
-# country.data_get now returns the country data from the last list
-# country.match_get returns the last match criteria
+# product.data_get now returns the product data from the last list
+# product.match_get returns the last match criteria
 ```
 
 Call `make` to create a fresh instance with the same configuration

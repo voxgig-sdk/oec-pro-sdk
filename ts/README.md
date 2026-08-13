@@ -37,7 +37,9 @@ const client = new OecProSDK({
 
 ### 2. List country records
 
-`list()` resolves to an array of Country objects — iterate it directly:
+`list()` resolves to an array of Country ENTITIES — every operation
+resolves to entities, not raw records. Iterate them directly, and call
+`.data()` on one for the record it holds:
 
 ```ts
 const countrys = await client.Country().list()
@@ -54,8 +56,8 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const countrys = await client.Country().list()
-  console.log(countrys)
+  const products = await client.Product().list()
+  console.log(products)
 } catch (err) {
   console.error('list failed:', err)
 }
@@ -121,9 +123,10 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = OecProSDK.test()
 
-const country = await client.Country().list()
-// country is a bare entity populated with mock response data
-console.log(country)
+const product = await client.Product().list()
+// product is the entity, populated with mock response data
+// — call product.data() for the record itself
+console.log(product)
 ```
 
 You can also use the instance method:
@@ -138,7 +141,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Country()
+const entity = client.Product()
 
 // First call runs the operation and stores its result
 await entity.list()
@@ -489,11 +492,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const country = client.Country()
-await country.list()
+const product = client.Product()
+await product.list()
 
-// country.data() now returns the country data from the last `list`
-// country.match() returns the last match criteria
+// product.data() now returns the product data from the last `list`
+// product.match() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

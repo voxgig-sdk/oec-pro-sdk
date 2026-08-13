@@ -94,6 +94,7 @@ module OecProConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/countries",
                   "parts" => [
@@ -107,7 +108,7 @@ module OecProConfig
                   },
                   "transform" => {
                     "req" => "`reqdata`",
-                    "res" => "`body`",
+                    "res" => "`body.data`",
                   },
                   "index$" => 0,
                 },
@@ -208,6 +209,7 @@ module OecProConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/products",
                   "parts" => [
@@ -223,7 +225,7 @@ module OecProConfig
                   },
                   "transform" => {
                     "req" => "`reqdata`",
-                    "res" => "`body`",
+                    "res" => "`body.data`",
                   },
                   "index$" => 0,
                 },
@@ -332,6 +334,7 @@ module OecProConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/trade",
                   "parts" => [
@@ -348,7 +351,7 @@ module OecProConfig
                   },
                   "transform" => {
                     "req" => "`reqdata`",
-                    "res" => "`body`",
+                    "res" => "`body.data`",
                   },
                   "index$" => 0,
                 },

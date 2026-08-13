@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import OecProControl
-from core.error import OecProError
-from core.result import OecProResult
-from core.spec import OecProSpec
+from oecpro_sdk.config import make_config
+from oecpro_sdk.features import _make_feature
+from oecpro_sdk.core.control import OecProControl
+from oecpro_sdk.core.error import OecProError
+from oecpro_sdk.core.result import OecProResult
+from oecpro_sdk.core.spec import OecProSpec
 
 
 # True when this SDK was generated with the named feature.

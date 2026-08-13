@@ -21,7 +21,7 @@ class Config {
 
 
   main = {
-    name: 'ProjectName',
+    name: 'OecPro',
   }
 
 
@@ -128,6 +128,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/countries",
               "parts": [
@@ -141,7 +142,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.data`"
               },
               "index$": 0
             }
@@ -242,6 +243,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/products",
               "parts": [
@@ -257,7 +259,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.data`"
               },
               "index$": 0
             }
@@ -366,6 +368,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/trade",
               "parts": [
@@ -382,7 +385,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.data`"
               },
               "index$": 0
             }

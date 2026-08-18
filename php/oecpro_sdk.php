@@ -40,7 +40,7 @@ class OecProSDK
         $utility = new OecProUtility();
         $this->_utility = $utility;
 
-        $config = OecProConfig::make_config();
+        $config = OecProConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

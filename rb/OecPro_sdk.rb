@@ -28,7 +28,7 @@ class OecProSDK
     utility = OecProUtility.new
     @_utility = utility
 
-    config = OecProConfig.make_config
+    config = OecProConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

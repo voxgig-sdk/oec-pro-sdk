@@ -15,7 +15,7 @@ require_relative "../OecPro_sdk"
 module OecProFeatureHarness
   # True when this SDK was generated with the named feature.
   def self.has_feature?(name)
-    f = OecProConfig.make_config["feature"]
+    f = OecProConfig.shared_config["feature"]
     f.is_a?(Hash) && !f[name].nil?
   end
 

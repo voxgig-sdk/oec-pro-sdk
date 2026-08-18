@@ -33,7 +33,7 @@ class TradeEntityTest < Minitest::Test
     assert_equal 3, seen.length
 
     # Inbound: streaming active -> yields each item from the feature.
-    cfg = OecProConfig.make_config
+    cfg = OecProConfig.shared_config
     if cfg["feature"].is_a?(Hash) && cfg["feature"].key?("streaming")
       sdk = OecProSDK.test(seed, { "feature" => { "streaming" => { "active" => true } } })
       got = []

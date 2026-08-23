@@ -33,6 +33,9 @@ class OecProConfig
         return [
             "main" => [
                 "name" => "OecPro",
+                "slug" => "oec-pro",
+                "version" => "0.0.1",
+                "target" => "php",
             ],
             "feature" => [
                 "test" => [

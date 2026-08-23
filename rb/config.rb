@@ -19,6 +19,9 @@ module OecProConfig
     {
       "main" => {
         "name" => "OecPro",
+        "slug" => "oec-pro",
+        "version" => "0.0.1",
+        "target" => "rb",
       },
       "feature" => {
         "test" => {

@@ -25,11 +25,8 @@ class Country(TypedDict, total=False):
 
 
 class CountryListMatch(TypedDict, total=False):
-    code: str
-    continent: str
     id: str
     name: str
-    region: str
 
 
 class Product(TypedDict, total=False):
@@ -43,11 +40,9 @@ class Product(TypedDict, total=False):
 
 class ProductListMatch(TypedDict, total=False):
     classification: str
-    code: str
     id: str
-    level: int
+    level: str
     name: str
-    parent_id: str
 
 
 class Trade(TypedDict, total=False):
@@ -60,9 +55,8 @@ class Trade(TypedDict, total=False):
 
 
 class TradeListMatch(TypedDict, total=False):
-    destination_id: str
-    export_value: float
-    import_value: float
-    origin_id: str
-    product_id: str
+    classification: str
+    destination: str
+    origin: str
+    product: str
     year: int

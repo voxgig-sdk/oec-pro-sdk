@@ -14,11 +14,8 @@
 ---@field region? string
 
 ---@class CountryListMatch
----@field code? string
----@field continent? string
 ---@field id? string
 ---@field name? string
----@field region? string
 
 ---@class Product
 ---@field classification? string
@@ -30,11 +27,9 @@
 
 ---@class ProductListMatch
 ---@field classification? string
----@field code? string
 ---@field id? string
----@field level? number
+---@field level? string
 ---@field name? string
----@field parent_id? string
 
 ---@class Trade
 ---@field destination_id? string
@@ -45,11 +40,10 @@
 ---@field year? number
 
 ---@class TradeListMatch
----@field destination_id? string
----@field export_value? number
----@field import_value? number
----@field origin_id? string
----@field product_id? string
+---@field classification? string
+---@field destination? string
+---@field origin? string
+---@field product? string
 ---@field year? number
 
 local M = {}

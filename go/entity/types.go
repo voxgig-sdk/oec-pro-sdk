@@ -23,11 +23,8 @@ type Country struct {
 
 // CountryListMatch is the typed request payload for Country.ListTyped.
 type CountryListMatch struct {
-	Code *string `json:"code,omitempty"`
-	Continent *string `json:"continent,omitempty"`
 	Id *string `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
-	Region *string `json:"region,omitempty"`
 }
 
 // Product is the typed data model for the product entity.
@@ -43,11 +40,9 @@ type Product struct {
 // ProductListMatch is the typed request payload for Product.ListTyped.
 type ProductListMatch struct {
 	Classification *string `json:"classification,omitempty"`
-	Code *string `json:"code,omitempty"`
 	Id *string `json:"id,omitempty"`
-	Level *int `json:"level,omitempty"`
+	Level *string `json:"level,omitempty"`
 	Name *string `json:"name,omitempty"`
-	ParentId *string `json:"parent_id,omitempty"`
 }
 
 // Trade is the typed data model for the trade entity.
@@ -62,11 +57,10 @@ type Trade struct {
 
 // TradeListMatch is the typed request payload for Trade.ListTyped.
 type TradeListMatch struct {
-	DestinationId *string `json:"destination_id,omitempty"`
-	ExportValue *float64 `json:"export_value,omitempty"`
-	ImportValue *float64 `json:"import_value,omitempty"`
-	OriginId *string `json:"origin_id,omitempty"`
-	ProductId *string `json:"product_id,omitempty"`
+	Classification *string `json:"classification,omitempty"`
+	Destination *string `json:"destination,omitempty"`
+	Origin *string `json:"origin,omitempty"`
+	Product *string `json:"product,omitempty"`
 	Year *int `json:"year,omitempty"`
 }
 

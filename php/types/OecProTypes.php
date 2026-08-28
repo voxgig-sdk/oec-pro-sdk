@@ -25,11 +25,8 @@ class Country
 /** Request payload for Country#list. */
 class CountryListMatch
 {
-    public ?string $code = null;
-    public ?string $continent = null;
     public ?string $id = null;
     public ?string $name = null;
-    public ?string $region = null;
 }
 
 /** Product entity data model. */
@@ -47,11 +44,9 @@ class Product
 class ProductListMatch
 {
     public ?string $classification = null;
-    public ?string $code = null;
     public ?string $id = null;
-    public ?int $level = null;
+    public ?string $level = null;
     public ?string $name = null;
-    public ?string $parent_id = null;
 }
 
 /** Trade entity data model. */
@@ -68,11 +63,10 @@ class Trade
 /** Request payload for Trade#list. */
 class TradeListMatch
 {
-    public ?string $destination_id = null;
-    public ?float $export_value = null;
-    public ?float $import_value = null;
-    public ?string $origin_id = null;
-    public ?string $product_id = null;
+    public ?string $classification = null;
+    public ?string $destination = null;
+    public ?string $origin = null;
+    public ?string $product = null;
     public ?int $year = null;
 }
 

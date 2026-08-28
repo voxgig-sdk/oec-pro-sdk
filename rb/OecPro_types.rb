@@ -35,26 +35,14 @@ Country = Struct.new(
 
 # Request payload for Country#list.
 #
-# @!attribute [rw] code
-#   @return [String, nil]
-#
-# @!attribute [rw] continent
-#   @return [String, nil]
-#
 # @!attribute [rw] id
 #   @return [String, nil]
 #
 # @!attribute [rw] name
 #   @return [String, nil]
-#
-# @!attribute [rw] region
-#   @return [String, nil]
 CountryListMatch = Struct.new(
-  :code,
-  :continent,
   :id,
   :name,
-  :region,
   keyword_init: true
 )
 
@@ -92,27 +80,19 @@ Product = Struct.new(
 # @!attribute [rw] classification
 #   @return [String, nil]
 #
-# @!attribute [rw] code
-#   @return [String, nil]
-#
 # @!attribute [rw] id
 #   @return [String, nil]
 #
 # @!attribute [rw] level
-#   @return [Integer, nil]
+#   @return [String, nil]
 #
 # @!attribute [rw] name
 #   @return [String, nil]
-#
-# @!attribute [rw] parent_id
-#   @return [String, nil]
 ProductListMatch = Struct.new(
   :classification,
-  :code,
   :id,
   :level,
   :name,
-  :parent_id,
   keyword_init: true
 )
 
@@ -147,29 +127,25 @@ Trade = Struct.new(
 
 # Request payload for Trade#list.
 #
-# @!attribute [rw] destination_id
+# @!attribute [rw] classification
 #   @return [String, nil]
 #
-# @!attribute [rw] export_value
-#   @return [Float, nil]
-#
-# @!attribute [rw] import_value
-#   @return [Float, nil]
-#
-# @!attribute [rw] origin_id
+# @!attribute [rw] destination
 #   @return [String, nil]
 #
-# @!attribute [rw] product_id
+# @!attribute [rw] origin
+#   @return [String, nil]
+#
+# @!attribute [rw] product
 #   @return [String, nil]
 #
 # @!attribute [rw] year
 #   @return [Integer, nil]
 TradeListMatch = Struct.new(
-  :destination_id,
-  :export_value,
-  :import_value,
-  :origin_id,
-  :product_id,
+  :classification,
+  :destination,
+  :origin,
+  :product,
   :year,
   keyword_init: true
 )

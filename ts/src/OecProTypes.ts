@@ -14,11 +14,8 @@ export interface Country {
 }
 
 export interface CountryListMatch {
-  code?: string
-  continent?: string
   id?: string
   name?: string
-  region?: string
 }
 
 export interface Product {
@@ -32,11 +29,9 @@ export interface Product {
 
 export interface ProductListMatch {
   classification?: string
-  code?: string
   id?: string
-  level?: number
+  level?: string
   name?: string
-  parent_id?: string
 }
 
 export interface Trade {
@@ -49,11 +44,10 @@ export interface Trade {
 }
 
 export interface TradeListMatch {
-  destination_id?: string
-  export_value?: number
-  import_value?: number
-  origin_id?: string
-  product_id?: string
+  classification?: string
+  destination?: string
+  origin?: string
+  product?: string
   year?: number
 }
 

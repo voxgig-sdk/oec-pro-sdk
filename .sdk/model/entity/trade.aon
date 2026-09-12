@@ -84,8 +84,10 @@ main: kit: entity: trade: {
           }
           method: "GET"
           orig: "/trade"
-          parts: [
-            "trade"
+          segments: [
+            {
+              lit: "trade"
+            }
           ]
           select: {
             exist: [

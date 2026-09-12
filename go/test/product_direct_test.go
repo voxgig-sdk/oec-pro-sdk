@@ -94,14 +94,22 @@ func productDirectSetup(mockres any) *productDirectSetupResult {
 	env := envOverride(map[string]any{
 		"OEC_PRO_TEST_PRODUCT_ENTID": map[string]any{},
 		"OEC_PRO_TEST_LIVE":    "FALSE",
-		"OEC_PRO_APIKEY":       "NONE",
+		"OEC_PRO_APIKEY":       "",
 	})
 
 	live := env["OEC_PRO_TEST_LIVE"] == "TRUE"
 
 	if live {
-		mergedOpts := map[string]any{
+		// sdk-test-control.json's test.client.options seeds the live
+		// client; the generated fields below overwrite anything they name.
+		mergedOpts := map[string]any{}
+		for k, v := range liveClientOptions() {
+			mergedOpts[k] = v
+		}
+		for k, v := range map[string]any{
 			"apikey": env["OEC_PRO_APIKEY"],
+		} {
+			mergedOpts[k] = v
 		}
 		client := sdk.NewOecProSDK(mergedOpts)
 

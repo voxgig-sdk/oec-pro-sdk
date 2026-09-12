@@ -98,7 +98,7 @@ func TestTradeEntity(t *testing.T) {
 		client := setup.client
 
 		// Bootstrap entity data from existing test data (no create step in flow).
-		tradeRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath("existing.trade", setup.data)))
+		tradeRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.trade")))
 		var tradeRef01Data map[string]any
 		if len(tradeRef01DataRaw) > 0 {
 			tradeRef01Data = core.ToMapAny(tradeRef01DataRaw[0][1])
@@ -147,7 +147,7 @@ func tradeBasicSetup(extra map[string]any) *entityTestSetup {
 	client := sdk.TestSDK(options, extra)
 
 	// Generate idmap via transform, matching TS pattern.
-	idmap := vs.Transform(
+	idmap, _ := vs.Transform(
 		[]any{"trade01", "trade02", "trade03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
@@ -167,7 +167,7 @@ func tradeBasicSetup(extra map[string]any) *entityTestSetup {
 		"OEC_PRO_TEST_TRADE_ENTID": idmap,
 		"OEC_PRO_TEST_LIVE":      "FALSE",
 		"OEC_PRO_TEST_EXPLAIN":   "FALSE",
-		"OEC_PRO_APIKEY":         "NONE",
+		"OEC_PRO_APIKEY":         "",
 	})
 
 	idmapResolved := core.ToMapAny(env["OEC_PRO_TEST_TRADE_ENTID"])
@@ -176,11 +176,23 @@ func tradeBasicSetup(extra map[string]any) *entityTestSetup {
 	}
 
 	if env["OEC_PRO_TEST_LIVE"] == "TRUE" {
+		// An empty map, not a nil one: Merge returns nil when its last entry
+		// is nil, and BasicSetup is normally called with no extras - so a
+		// bare nil silently discarded the apikey and server values below.
+		extraOpts := extra
+		if extraOpts == nil {
+			extraOpts = map[string]any{}
+		}
+
 		mergedOpts := vs.Merge([]any{
+			// liveClientOptions() FIRST, so the generated fields below win:
+			// sdk-test-control.json's test.client.options adds to the live
+			// client, it does not redirect it.
+			liveClientOptions(),
 			map[string]any{
 				"apikey": env["OEC_PRO_APIKEY"],
 			},
-			extra,
+			extraOpts,
 		})
 		client = sdk.NewOecProSDK(core.ToMapAny(mergedOpts))
 	}

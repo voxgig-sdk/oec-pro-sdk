@@ -10,6 +10,17 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
+// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
+// the model's active plugin groups. A feature that takes a `plugins` option
+// (secrets over sekreto) reads its own entry; a feature with no plugins has
+// none. Named imports above make each definition statically reachable, so
+// an SDK carries exactly the plugin modules its model selects — the same
+// leanness the old side-effect registry imports bought, without a registry.
+const FEATURE_PLUGINS: Record<string, any[]> = {
+  
+}
+
+
 class Config {
 
   makeFeature(this: any, fn: string) {
@@ -97,6 +108,10 @@ class Config {
           "type": "`$STRING`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "country",
       "op": {
         "list": {
@@ -123,8 +138,10 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/countries",
-              "parts": [
-                "countries"
+              "segments": [
+                {
+                  "lit": "countries"
+                }
               ],
               "select": {
                 "exist": [
@@ -135,7 +152,10 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.data`"
-              }
+              },
+              "parts": [
+                "countries"
+              ]
             }
           ]
         }
@@ -171,6 +191,10 @@ class Config {
           "type": "`$STRING`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "product",
       "op": {
         "list": {
@@ -209,8 +233,10 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/products",
-              "parts": [
-                "products"
+              "segments": [
+                {
+                  "lit": "products"
+                }
               ],
               "select": {
                 "exist": [
@@ -223,7 +249,10 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.data`"
-              }
+              },
+              "parts": [
+                "products"
+              ]
             }
           ]
         }
@@ -303,8 +332,10 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/trade",
-              "parts": [
-                "trade"
+              "segments": [
+                {
+                  "lit": "trade"
+                }
               ],
               "select": {
                 "exist": [
@@ -318,7 +349,10 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.data`"
-              }
+              },
+              "parts": [
+                "trade"
+              ]
             }
           ]
         }
@@ -334,6 +368,7 @@ class Config {
 const config = new Config()
 
 export {
-  config
+  config,
+  FEATURE_PLUGINS,
 }
 

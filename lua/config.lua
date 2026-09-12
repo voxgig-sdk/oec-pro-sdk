@@ -57,6 +57,10 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
         },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
+        },
         ["name"] = "country",
         ["op"] = {
           ["list"] = {
@@ -83,8 +87,10 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/countries",
-                ["parts"] = {
-                  "countries",
+                ["segments"] = {
+                  {
+                    ["lit"] = "countries",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -95,6 +101,9 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.data`",
+                },
+                ["parts"] = {
+                  "countries",
                 },
               },
             },
@@ -130,6 +139,10 @@ local function make_config()
             ["name"] = "parent_id",
             ["type"] = "`$STRING`",
           },
+        },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
         },
         ["name"] = "product",
         ["op"] = {
@@ -169,8 +182,10 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/products",
-                ["parts"] = {
-                  "products",
+                ["segments"] = {
+                  {
+                    ["lit"] = "products",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -183,6 +198,9 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.data`",
+                },
+                ["parts"] = {
+                  "products",
                 },
               },
             },
@@ -263,8 +281,10 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/trade",
-                ["parts"] = {
-                  "trade",
+                ["segments"] = {
+                  {
+                    ["lit"] = "trade",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -278,6 +298,9 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.data`",
+                },
+                ["parts"] = {
+                  "trade",
                 },
               },
             },

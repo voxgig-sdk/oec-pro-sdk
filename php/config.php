@@ -83,6 +83,10 @@ class OecProConfig
               'type' => '`$STRING`',
             ],
           ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
+          ],
           'name' => 'country',
           'op' => [
             'list' => [
@@ -109,8 +113,10 @@ class OecProConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/countries',
-                  'parts' => [
-                    'countries',
+                  'segments' => [
+                    [
+                      'lit' => 'countries',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -121,6 +127,9 @@ class OecProConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.data`',
+                  ],
+                  'parts' => [
+                    'countries',
                   ],
                 ],
               ],
@@ -156,6 +165,10 @@ class OecProConfig
               'name' => 'parent_id',
               'type' => '`$STRING`',
             ],
+          ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
           ],
           'name' => 'product',
           'op' => [
@@ -195,8 +208,10 @@ class OecProConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/products',
-                  'parts' => [
-                    'products',
+                  'segments' => [
+                    [
+                      'lit' => 'products',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -209,6 +224,9 @@ class OecProConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.data`',
+                  ],
+                  'parts' => [
+                    'products',
                   ],
                 ],
               ],
@@ -289,8 +307,10 @@ class OecProConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/trade',
-                  'parts' => [
-                    'trade',
+                  'segments' => [
+                    [
+                      'lit' => 'trade',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -304,6 +324,9 @@ class OecProConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.data`',
+                  ],
+                  'parts' => [
+                    'trade',
                   ],
                 ],
               ],

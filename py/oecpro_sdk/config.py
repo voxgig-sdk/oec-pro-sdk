@@ -1,6 +1,14 @@
 # OecPro SDK configuration
 
 
+# The sekreto plugin DEFINITIONS the model selected per feature, imported
+# above by name from the modules the catalogue's active `plugin.def`
+# entries declare. Handed to each feature (secrets builds its Sekreto
+# with them): a provider kind not listed here is unknown to that SDK.
+FEATURE_PLUGINS = {
+}
+
+
 _shared_config = None
 
 
@@ -78,6 +86,10 @@ def make_config():
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "country",
         "op": {
           "list": {
@@ -104,8 +116,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/countries",
-                "parts": [
-                  "countries",
+                "segments": [
+                  {
+                    "lit": "countries",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -117,6 +131,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.data`",
                 },
+                "parts": [
+                  "countries",
+                ],
               },
             ],
           },
@@ -152,6 +169,10 @@ def make_config():
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "product",
         "op": {
           "list": {
@@ -190,8 +211,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/products",
-                "parts": [
-                  "products",
+                "segments": [
+                  {
+                    "lit": "products",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -205,6 +228,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.data`",
                 },
+                "parts": [
+                  "products",
+                ],
               },
             ],
           },
@@ -284,8 +310,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/trade",
-                "parts": [
-                  "trade",
+                "segments": [
+                  {
+                    "lit": "trade",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -300,6 +328,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.data`",
                 },
+                "parts": [
+                  "trade",
+                ],
               },
             ],
           },

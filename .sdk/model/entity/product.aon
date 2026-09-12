@@ -82,8 +82,10 @@ main: kit: entity: product: {
           }
           method: "GET"
           orig: "/products"
-          parts: [
-            "products"
+          segments: [
+            {
+              lit: "products"
+            }
           ]
           select: {
             exist: [

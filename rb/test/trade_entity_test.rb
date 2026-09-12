@@ -118,7 +118,7 @@ def trade_basic_setup(extra)
     "OEC_PRO_TEST_TRADE_ENTID" => idmap,
     "OEC_PRO_TEST_LIVE" => "FALSE",
     "OEC_PRO_TEST_EXPLAIN" => "FALSE",
-    "OEC_PRO_APIKEY" => "NONE",
+    "OEC_PRO_APIKEY" => "",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -129,6 +129,9 @@ def trade_basic_setup(extra)
 
   if env["OEC_PRO_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
+      # FIRST, so the generated fields below win: sdk-test-control.json's
+      # test.client.options adds to the live client, it does not redirect it.
+      Runner.live_client_options,
       {
         "apikey" => env["OEC_PRO_APIKEY"],
       },

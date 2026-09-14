@@ -105,7 +105,7 @@ local results, err = client:Product():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/oec-pro` | publish pending — [install from git tag](https://github.com/voxgig-sdk/oec-pro-sdk/releases) |
+| TypeScript | `@voxgig-sdk/oec-pro-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/oec-pro-sdk/releases) |
 | Python | `voxgig-sdk-oec-pro` | publish pending — [install from git tag](https://github.com/voxgig-sdk/oec-pro-sdk/releases) |
 | PHP | `voxgig-sdk/oec-pro` | publish pending — [install from git tag](https://github.com/voxgig-sdk/oec-pro-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/oec-pro-sdk/go` | `go get github.com/voxgig-sdk/oec-pro-sdk/go@latest` |
@@ -119,7 +119,7 @@ local results, err = client:Product():list()
 ### TypeScript
 
 ```ts
-import { OecProSDK } from '@voxgig-sdk/oec-pro'
+import { OecProSDK } from '@voxgig-sdk/oec-pro-sdk'
 
 const client = new OecProSDK({
   apikey: process.env.OEC_PRO_APIKEY,

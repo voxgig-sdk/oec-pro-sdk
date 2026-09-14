@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { OecProSDK } from '@voxgig-sdk/oec-pro'
+import { OecProSDK } from '@voxgig-sdk/oec-pro-sdk'
 
 const client = new OecProSDK({
   apikey: process.env.OEC_PRO_APIKEY,
@@ -505,7 +505,7 @@ oec-pro/
 Import the SDK from the package root:
 
 ```ts
-import { OecProSDK } from '@voxgig-sdk/oec-pro'
+import { OecProSDK } from '@voxgig-sdk/oec-pro-sdk'
 ```
 
 ### Entity state

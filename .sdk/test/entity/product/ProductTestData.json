@@ -5,7 +5,7 @@
         "classification": "s3c",
         "code": "s3d",
         "id": "PRODUCT00",
-        "level": "s3f",
+        "level": 63,
         "name": "s40",
         "parent_id": "PARENT01"
       },
@@ -13,7 +13,7 @@
         "classification": "s78",
         "code": "s79",
         "id": "PRODUCT01",
-        "level": "s7b",
+        "level": 123,
         "name": "s7c",
         "parent_id": "PARENT01"
       },
@@ -21,7 +21,7 @@
         "classification": "sb4",
         "code": "sb5",
         "id": "PRODUCT02",
-        "level": "sb7",
+        "level": 183,
         "name": "sb8",
         "parent_id": "PARENT01"
       }
@@ -32,9 +32,150 @@
       "product_ref01": {
         "classification": "sf0",
         "code": "sf1",
-        "level": "sf3",
+        "level": 243,
         "name": "sf4",
         "parent_id": "PARENT01"
+      }
+    }
+  },
+  "requests": {
+    "GET /products": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getProducts",
+        "parameters": [
+          {
+            "description": "Product ID or code",
+            "in": "query",
+            "name": "id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Product name (partial match supported)",
+            "in": "query",
+            "name": "name",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Product classification system",
+            "in": "query",
+            "name": "classification",
+            "required": false,
+            "schema": {
+              "enum": [
+                "HS92",
+                "HS96",
+                "HS02",
+                "HS07",
+                "HS12",
+                "SITC"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Classification level (2-digit, 4-digit, 6-digit)",
+            "in": "query",
+            "name": "level",
+            "required": false,
+            "schema": {
+              "enum": [
+                "2",
+                "4",
+                "6"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "properties": {
+                          "classification": {
+                            "type": "string"
+                          },
+                          "code": {
+                            "type": "string"
+                          },
+                          "id": {
+                            "type": "string"
+                          },
+                          "level": {
+                            "type": "integer"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "parent_id": {
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response with product data"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "code": {
+                      "description": "Error code",
+                      "type": "string"
+                    },
+                    "details": {
+                      "description": "Additional error details",
+                      "type": "string"
+                    },
+                    "error": {
+                      "description": "Error message",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Bad request - invalid parameters"
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "securitySchemes": {
+          "ApiKeyAuth": {
+            "description": "API key required for accessing OEC Pro API endpoints",
+            "in": "header",
+            "name": "X-API-Key",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "operation"
       }
     }
   }

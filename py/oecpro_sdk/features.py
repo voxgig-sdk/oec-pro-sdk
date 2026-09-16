@@ -1,12 +1,18 @@
 # OecPro SDK feature factory
 
 from oecpro_sdk.feature.base_feature import OecProBaseFeature
+from oecpro_sdk.feature.ratelimit_feature import OecProRatelimitFeature
+from oecpro_sdk.feature.retry_feature import OecProRetryFeature
 from oecpro_sdk.feature.test_feature import OecProTestFeature
+from oecpro_sdk.feature.timeout_feature import OecProTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: OecProBaseFeature(),
+    "ratelimit": lambda: OecProRatelimitFeature(),
+    "retry": lambda: OecProRetryFeature(),
     "test": lambda: OecProTestFeature(),
+    "timeout": lambda: OecProTimeoutFeature(),
 }
 
 

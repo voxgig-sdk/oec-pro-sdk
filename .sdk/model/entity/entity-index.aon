@@ -1,5 +1,5 @@
 # Entity Models
 
-@"country.aon"
-@"product.aon"
-@"trade.aon"
+@"./country.aon"
+@"./product.aon"
+@"./trade.aon"

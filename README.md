@@ -105,12 +105,12 @@ local results, err = client:Product():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/oec-pro-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/oec-pro-sdk/releases) |
-| Python | `voxgig-sdk-oec-pro` | publish pending — [install from git tag](https://github.com/voxgig-sdk/oec-pro-sdk/releases) |
-| PHP | `voxgig-sdk/oec-pro` | publish pending — [install from git tag](https://github.com/voxgig-sdk/oec-pro-sdk/releases) |
+| TypeScript | `@voxgig-sdk/oec-pro-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/oec-pro-sdk/tags) |
+| Python | `voxgig-sdk-oec-pro` | publish pending — [install from git tag](https://github.com/voxgig-sdk/oec-pro-sdk/tags) |
+| PHP | `voxgig-sdk/oec-pro` | publish pending — [install from git tag](https://github.com/voxgig-sdk/oec-pro-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/oec-pro-sdk/go` | `go get github.com/voxgig-sdk/oec-pro-sdk/go@latest` |
-| Ruby | `voxgig-sdk-oec-pro` | publish pending — [install from git tag](https://github.com/voxgig-sdk/oec-pro-sdk/releases) |
-| Lua | `voxgig-sdk-oec-pro` | publish pending — [install from git tag](https://github.com/voxgig-sdk/oec-pro-sdk/releases) |
+| Ruby | `voxgig-sdk-oec-pro` | publish pending — [install from git tag](https://github.com/voxgig-sdk/oec-pro-sdk/tags) |
+| Lua | `voxgig-sdk-oec-pro` | publish pending — [install from git tag](https://github.com/voxgig-sdk/oec-pro-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/oec-pro-sdk/go-cli` | `go install github.com/voxgig-sdk/oec-pro-sdk/go-cli/cmd/oec-pro@latest` |
 | Go MCP server | `github.com/voxgig-sdk/oec-pro-sdk/go-mcp` | `go get github.com/voxgig-sdk/oec-pro-sdk/go-mcp@latest` |
 

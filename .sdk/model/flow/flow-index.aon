@@ -1,5 +1,5 @@
 # Flows
 
-@"BasicCountryFlow.aon"
-@"BasicProductFlow.aon"
-@"BasicTradeFlow.aon"
+@"./BasicCountryFlow.aon"
+@"./BasicProductFlow.aon"
+@"./BasicTradeFlow.aon"
